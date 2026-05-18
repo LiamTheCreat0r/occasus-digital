@@ -1,0 +1,41 @@
+---
+import GameLayout from '../../layouts/GameLayout.astro';
+import { games } from '../../data/games';
+import endhellCover from '../../assets/images/game-covers/endhell.png';
+import spectraCollabCover from '../../assets/images/game-covers/spectra-collab.png';
+import parabellumCover from '../../assets/images/game-covers/parabellum-rain.png';
+import babelCover from '../../assets/images/game-covers/babel-adventure.png';
+import endhellCartridge from '../../assets/images/cartridges/endhell-cartridge.png';
+import spectraCollabCartridge from '../../assets/images/cartridges/spectra-collab-cartridge.png';
+import parabellumCartridge from '../../assets/images/cartridges/parabellum-rain-cartridge.png';
+import babelCartridge from '../../assets/images/cartridges/babel-adventure-cartridge.png';
+
+export async function getStaticPaths() {
+  return games.map((game) => ({
+    params: { slug: game.slug },
+    props: { game },
+  }));
+}
+
+const { game } = Astro.props;
+
+const coverMap: Record<string, any> = {
+  endhell: endhellCover,
+  'spectra-collab': spectraCollabCover,
+  parabellum: parabellumCover,
+  babel: babelCover,
+};
+
+const cartridgeMap: Record<string, any> = {
+  endhell: endhellCartridge,
+  'spectra-collab': spectraCollabCartridge,
+  parabellum: parabellumCartridge,
+  babel: babelCartridge,
+};
+
+const cover = coverMap[game.slug];
+const cartridge = cartridgeMap[game.slug];
+const screenshots = [cover, cover, cover, cover];
+---
+
+<GameLayout title={`${game.title} - Excurse Software`} game={game} cover={cover} screenshots={screenshots} />

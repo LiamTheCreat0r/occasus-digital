@@ -98,7 +98,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
         <h3 class="game-title" id="game-title">Endhell</h3>
         <div class="game-info-right">
           <p class="game-desc" id="game-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <a href="#" class="game-btn">Know More</a>
+          <a href="/excurse-software/games/endhell" class="game-btn" id="game-btn">Know More</a>
         </div>
       </div>
     <div class="games-content">
@@ -131,7 +131,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
             <h3>Shahine</h3>
             <div class="member-tags">
               <span class="tag">Artist</span>
-              <span class="tag">Game Design</span>
+              <span class="tag">Game Designer</span>
             </div>
           </div>
         </div>
@@ -141,7 +141,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
             <h3>Liam Valty</h3>
             <div class="member-tags">
               <span class="tag">Developer</span>
-              <span class="tag">Game Design</span>
+              <span class="tag">Game Designer</span>
             </div>
           </div>
         </div>
@@ -1172,6 +1172,8 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
     if (gameInfo[key]) {
       gameTitleEl.textContent = gameInfo[key].title;
       gameDescEl.textContent = gameInfo[key].desc;
+      const gameBtn = document.getElementById('game-btn');
+      if (gameBtn) gameBtn.href = `/excurse-software/games/${key}`;
       const gameInfoContainer = document.querySelector('.game-info');
       if (gameInfoContainer) gameInfoContainer.classList.add('visible');
     }
@@ -1212,11 +1214,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
     });
 
     cartridge.addEventListener('click', () => {
-      cartridges.forEach(c => c.classList.remove('selected'));
-      selectedCover = coverKey;
-      cartridge.classList.add('selected');
-      setCover(coverUrl);
-      updateGameInfo(coverKey);
+      window.location.href = `/excurse-software/games/${coverKey}`;
     });
   });
 
