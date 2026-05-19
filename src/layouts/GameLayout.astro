@@ -20,7 +20,7 @@ export interface Props {
 }
 
 const { title, game, cover, screenshots } = Astro.props;
-const base = '/excurse-software';
+const base = '';
 ---
 
 <BaseLayout title={title}>
@@ -33,25 +33,36 @@ const base = '/excurse-software';
     <div class="game-page-content">
       <div class="game-description-section">
         <p>{game.description}</p>
-        <div class="game-available">
-          <p class="game-available-label">Available on</p>
-          <div class="game-available-links">
-            <a href="https://excurse-software.itch.io/" target="_blank" rel="noopener noreferrer" class="available-link">
-              <Image src={itchIcon} alt="Itch.io" width={48} height={48} loading="lazy" quality={100} format="png" />
+    <div class="game-available">
+      <p class="game-available-label">Available on</p>
+      <div class="game-available-links">
+        {
+          game.itchUrl && (
+            <a href={game.itchUrl} target="_blank" rel="noopener noreferrer" class="available-link">
+              <Image src={itchIcon} alt="Itch.io" width={112} height={112} loading="lazy" quality={100} format="png" />
             </a>
-            <a href="https://www.newgrounds.com/" target="_blank" rel="noopener noreferrer" class="available-link">
-              <Image src={newgroundsIcon} alt="Newgrounds" width={48} height={48} loading="lazy" quality={100} format="png" />
+          )
+        }
+        {
+          game.newgroundsUrl && (
+            <a href={game.newgroundsUrl} target="_blank" rel="noopener noreferrer" class="available-link">
+              <Image src={newgroundsIcon} alt="Newgrounds" width={112} height={112} loading="lazy" quality={100} format="png" />
             </a>
-          </div>
-        </div>
+          )
+        }
+      </div>
+    </div>
       </div>
       <div class="game-screenshots-section">
         {
           screenshots.map((img) => (
-            <Image src={img} alt={`${game.title} screenshot`} class="game-screenshot" />
+            <Image src={img} alt={`${game.title} screenshot`} class="game-screenshot" data-full={img.src} />
           ))
         }
       </div>
+    </div>
+    <div class="image-preview" id="image-preview">
+      <img src="" alt="Preview" class="image-preview-img" id="image-preview-img" />
     </div>
     {
       game.videos && game.videos.length > 0 && (
@@ -289,12 +300,38 @@ const base = '/excurse-software';
   }
 
   .game-screenshot:hover {
-    transform: scale(1.15);
+    transform: scale(1.4);
     z-index: 1;
   }
 
+  .image-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .image-preview.active {
+    display: flex;
+  }
+
+  .image-preview-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    pointer-events: none;
+  }
+
   .game-videos {
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 
   .game-videos-container {
@@ -336,7 +373,7 @@ const base = '/excurse-software';
 
   .game-description-section .game-available-label {
     font-family: 'Anton', sans-serif;
-    font-size: 1rem;
+    font-size: 3rem;
     color: #a94141;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -345,13 +382,21 @@ const base = '/excurse-software';
 
   .game-available-links {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     align-items: center;
   }
 
   .available-link {
     display: flex;
     transition: transform 0.2s ease, opacity 0.2s;
+  }
+
+  .available-link img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
 
   .available-link:hover {
@@ -371,7 +416,7 @@ const base = '/excurse-software';
     background: #0a0a0a;
     border-top: 1px solid #1a1a1a;
     padding: 3rem 2rem;
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 
   #game-footer .footer-inner {
@@ -519,4 +564,23 @@ const base = '/excurse-software';
       });
     });
   }
+
+  const preview = document.getElementById('image-preview');
+  const previewImg = document.getElementById('image-preview-img');
+  const screenshots = document.querySelectorAll('.game-screenshot');
+
+  screenshots.forEach((shot) => {
+    shot.addEventListener('click', () => {
+      const src = shot.dataset.full;
+      if (src) {
+        previewImg.src = src;
+        preview.classList.add('active');
+      }
+    });
+  });
+
+  preview?.addEventListener('click', () => {
+    preview.classList.remove('active');
+    previewImg.src = '';
+  });
 </script>

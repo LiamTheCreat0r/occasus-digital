@@ -5,10 +5,20 @@ import endhellCover from '../../assets/images/game-covers/endhell.png';
 import spectraCollabCover from '../../assets/images/game-covers/spectra-collab.png';
 import parabellumCover from '../../assets/images/game-covers/parabellum-rain.png';
 import babelCover from '../../assets/images/game-covers/babel-adventure.png';
-import endhellCartridge from '../../assets/images/cartridges/endhell-cartridge.png';
-import spectraCollabCartridge from '../../assets/images/cartridges/spectra-collab-cartridge.png';
-import parabellumCartridge from '../../assets/images/cartridges/parabellum-rain-cartridge.png';
-import babelCartridge from '../../assets/images/cartridges/babel-adventure-cartridge.png';
+
+import babelScreenshot1 from '../../assets/images/game-screenshots/babel-adventure-screenshot-1.png';
+import babelScreenshot2 from '../../assets/images/game-screenshots/babel-adventure-screenshot-2.png';
+import babelScreenshot3 from '../../assets/images/game-screenshots/babel-adventure-screenshot-3.png';
+import babelScreenshot4 from '../../assets/images/game-screenshots/babel-adventure-screenshot-4.png';
+import parabellumScreenshot1 from '../../assets/images/game-screenshots/parabellum-rain-screenshot-1.png';
+import parabellumScreenshot2 from '../../assets/images/game-screenshots/parabellum-rain-screenshot-2.png';
+import parabellumScreenshot3 from '../../assets/images/game-screenshots/parabellum-rain-screenshot-3.png';
+import parabellumScreenshot4 from '../../assets/images/game-screenshots/parabellum-rain-screenshot-4.png';
+import parabellumScreenshot5 from '../../assets/images/game-screenshots/parabellum-rain-screenshot-5.png';
+import spectraCollabScreenshot1 from '../../assets/images/game-screenshots/spectra-collab-screenshot-1.png';
+import spectraCollabScreenshot2 from '../../assets/images/game-screenshots/spectra-collab-screenshot-2.png';
+import spectraCollabScreenshot3 from '../../assets/images/game-screenshots/spectra-collab-screenshot-3.png';
+import spectraCollabScreenshot4 from '../../assets/images/game-screenshots/spectra-collab-screenshot-4.png';
 
 export async function getStaticPaths() {
   return games.map((game) => ({
@@ -26,16 +36,15 @@ const coverMap: Record<string, any> = {
   babel: babelCover,
 };
 
-const cartridgeMap: Record<string, any> = {
-  endhell: endhellCartridge,
-  'spectra-collab': spectraCollabCartridge,
-  parabellum: parabellumCartridge,
-  babel: babelCartridge,
+const screenshotMap: Record<string, any[]> = {
+  endhell: [],
+  'spectra-collab': [spectraCollabScreenshot1, spectraCollabScreenshot2, spectraCollabScreenshot3, spectraCollabScreenshot4],
+  parabellum: [parabellumScreenshot1, parabellumScreenshot2, parabellumScreenshot3, parabellumScreenshot4, parabellumScreenshot5],
+  babel: [babelScreenshot1, babelScreenshot2, babelScreenshot3, babelScreenshot4],
 };
 
 const cover = coverMap[game.slug];
-const cartridge = cartridgeMap[game.slug];
-const screenshots = [cover, cover, cover, cover];
+const screenshots = screenshotMap[game.slug];
 ---
 
 <GameLayout title={`${game.title} - Excurse Software`} game={game} cover={cover} screenshots={screenshots} />

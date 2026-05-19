@@ -2,7 +2,7 @@
 title: "ENDHELL Demo Launch"
 description: "ENDHELL mobile demo is out on Itch and Newgrounds!"
 pubDate: 2026-05-22
-heroImage: "/excurse-software/images/blog-thumbnails/endhell.png"
+heroImage: "/images/blog-thumbnails/endhell.png"
 tags: ["Launch", "ENDHELL"]
 ---
 

@@ -49,28 +49,28 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
   <section id="studio" class="section studio">
     <div class="studio-video-bg">
       <video muted loop playsinline class="bg-video active">
-        <source src="/excurse-software/videos/babel-1.webm" type="video/webm" />
+        <source src="/videos/babel-1.webm" type="video/webm" />
       </video>
       <video muted loop playsinline class="bg-video">
-        <source src="/excurse-software/videos/babel-2.webm" type="video/webm" />
+        <source src="/videos/babel-2.webm" type="video/webm" />
       </video>
       <video muted loop playsinline class="bg-video">
-        <source src="/excurse-software/videos/babel-3.webm" type="video/webm" />
+        <source src="/videos/babel-3.webm" type="video/webm" />
       </video>
       <video muted loop playsinline class="bg-video">
-        <source src="/excurse-software/videos/parabellum-rain1.webm" type="video/webm" />
+        <source src="/videos/parabellum-rain1.webm" type="video/webm" />
       </video>
       <video muted loop playsinline class="bg-video">
-        <source src="/excurse-software/videos/parabellum-rain2.webm" type="video/webm" />
+        <source src="/videos/parabellum-rain2.webm" type="video/webm" />
       </video>
       <video muted loop playsinline class="bg-video">
-        <source src="/excurse-software/videos/parabellum-rain3.webm" type="video/webm" />
+        <source src="/videos/parabellum-rain3.webm" type="video/webm" />
       </video>
       <video muted loop playsinline class="bg-video">
-        <source src="/excurse-software/videos/spectra-collab1.webm" type="video/webm" />
+        <source src="/videos/spectra-collab1.webm" type="video/webm" />
       </video>
       <video muted loop playsinline class="bg-video">
-        <source src="/excurse-software/videos/spectra-collab2.webm" type="video/webm" />
+        <source src="/videos/spectra-collab2.webm" type="video/webm" />
       </video>
     </div>
     <div class="studio-content">
@@ -98,7 +98,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
         <h3 class="game-title" id="game-title">Endhell</h3>
         <div class="game-info-right">
           <p class="game-desc" id="game-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <a href="/excurse-software/games/endhell" class="game-btn" id="game-btn">Know More</a>
+          <a href="/games/endhell" class="game-btn" id="game-btn">Know More</a>
         </div>
       </div>
     <div class="games-content">
@@ -164,7 +164,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
       {
         posts.map((post) => (
           <article class="blog-card">
-            <a href={`/excurse-software/blog/${post.id}`} class="blog-card-link">
+            <a href={`/blog/${post.id}`} class="blog-card-link">
               {post.data.heroImage && (
                 <img src={post.data.heroImage} alt={post.data.title} class="blog-thumbnail" loading="lazy" />
               )}
@@ -1145,10 +1145,10 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
   };
 
   const covers = {
-    babel: 'url(/excurse-software/images/game-covers/babel-adventure.png)',
-    parabellum: 'url(/excurse-software/images/game-covers/parabellum-rain.png)',
-    endhell: 'url(/excurse-software/images/game-covers/endhell.png)',
-    'spectra-collab': 'url(/excurse-software/images/game-covers/spectra-collab.png)'
+    babel: 'url(/images/game-covers/babel-adventure.png)',
+    parabellum: 'url(/images/game-covers/parabellum-rain.png)',
+    endhell: 'url(/images/game-covers/endhell.png)',
+    'spectra-collab': 'url(/images/game-covers/spectra-collab.png)'
   };
 
   const gameTitleEl = document.getElementById('game-title');
@@ -1173,7 +1173,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
       gameTitleEl.textContent = gameInfo[key].title;
       gameDescEl.textContent = gameInfo[key].desc;
       const gameBtn = document.getElementById('game-btn');
-      if (gameBtn) gameBtn.href = `/excurse-software/games/${key}`;
+      if (gameBtn) gameBtn.href = `/games/${key}`;
       const gameInfoContainer = document.querySelector('.game-info');
       if (gameInfoContainer) gameInfoContainer.classList.add('visible');
     }
@@ -1214,7 +1214,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
     });
 
     cartridge.addEventListener('click', () => {
-      window.location.href = `/excurse-software/games/${coverKey}`;
+      window.location.href = `/games/${coverKey}`;
     });
   });
 
