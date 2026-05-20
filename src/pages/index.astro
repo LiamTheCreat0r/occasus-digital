@@ -25,7 +25,30 @@ import shahinePortrait from '../assets/images/portraits/shahine-rachidi.png';
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
-<BaseLayout title="Excurse Software" description="A video game studio">
+<BaseLayout
+  title="Excurse Software"
+  description="A video game studio crafting unique, imaginative experiences. Creators of Endhell, Parabellum Rain, Babel Adventure, and Spectra Collab."
+  type="website"
+  url="/"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Excurse Software",
+    "url": "https://excurse-software.studio",
+    "logo": "https://excurse-software.studio/favicon.png",
+    "sameAs": [
+      "https://x.com/excursesoftware",
+      "https://www.instagram.com/excurse_software/",
+      "https://www.tiktok.com/@excurse_software"
+    ],
+    "makesOffer": [
+      { "@type": "Product", "name": "Endhell", "category": "Video Game" },
+      { "@type": "Product", "name": "Parabellum Rain", "category": "Video Game" },
+      { "@type": "Product", "name": "Babel Adventure", "category": "Video Game" },
+      { "@type": "Product", "name": "Spectra Collab", "category": "Video Game" }
+    ]
+  }}
+>
   <nav id="menu-bar">
     <div class="menu-inner">
       <a href="#" class="menu-logo-link">

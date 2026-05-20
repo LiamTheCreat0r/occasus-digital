@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://excurse.com/sitemap-index.xml
+Sitemap: https://excurse-software.studio/sitemap-index.xml

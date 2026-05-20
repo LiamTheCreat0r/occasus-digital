@@ -1,10 +1,16 @@
 ---
+import Seo from '../components/Seo.astro';
+
 export interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: string;
+  url?: string;
+  jsonLd?: object;
 }
 
-const { title, description } = Astro.props;
+const { title, description = 'Excurse Software — A video game studio crafting unique, imaginative experiences.', image, type, url, jsonLd } = Astro.props;
 ---
 
 <!doctype html>
@@ -12,9 +18,18 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-    {description && <meta name="description" content={description} />}
+    <title>{title} — Excurse Software</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="author" content="Excurse Software" />
+    <meta name="keywords" content="indie games, video game studio, game development, Excurse Software" />
+    <Seo
+      title={title}
+      description={description}
+      image={image}
+      type={type}
+      url={url}
+      jsonLd={jsonLd}
+    />
   </head>
   <body>
     <slot />

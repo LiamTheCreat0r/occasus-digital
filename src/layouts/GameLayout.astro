@@ -21,13 +21,27 @@ export interface Props {
 
 const { title, game, cover, screenshots } = Astro.props;
 const base = '';
+const coverUrl = cover.src;
 
 function renderDescription(text: string): string {
   return text.replace(/\*\*(.+?)\*\*/g, '<span class="highlight">$1</span>');
 }
+
+const cleanDescription = game.description.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\n+/g, ' ').trim();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": game.title,
+  "description": cleanDescription,
+  "image": coverUrl,
+  "genre": ["Indie", "Action"],
+  "publisher": { "@type": "Organization", "name": "Excurse Software" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+};
 ---
 
-<BaseLayout title={title}>
+<BaseLayout title={game.title} description={cleanDescription} image={coverUrl} type="product" url={`/games/${game.slug}`} jsonLd={jsonLd}>
   <Navbar />
   <div class="game-hero">
     <Image src={cover} alt={game.title} class="game-hero-img" />
