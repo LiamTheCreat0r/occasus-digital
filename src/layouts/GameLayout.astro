@@ -21,6 +21,10 @@ export interface Props {
 
 const { title, game, cover, screenshots } = Astro.props;
 const base = '';
+
+function renderDescription(text: string): string {
+  return text.replace(/\*\*(.+?)\*\*/g, '<span class="highlight">$1</span>');
+}
 ---
 
 <BaseLayout title={title}>
@@ -32,7 +36,7 @@ const base = '';
     <h1 class="game-page-title">{game.title}</h1>
     <div class="game-page-content">
       <div class="game-description-section">
-        {game.description.split('\n\n').map((paragraph) => <p>{paragraph}</p>)}
+        {game.description.split(/\n+/).map((paragraph) => <p set:html={renderDescription(paragraph.trim())}></p>)}
     <div class="game-available">
       <p class="game-available-label">Available on</p>
       <div class="game-available-links">
@@ -67,7 +71,7 @@ const base = '';
     {
       game.videos && game.videos.length > 0 && (
         <div class="game-videos">
-          <div class="game-videos-container" id="game-videos-container">
+          <div class="game-videos-container" id="game-videos-container" class:list={[game.slug === 'babel' && 'square']}>
             {
               game.videos.map((video, i) => (
                 <video
@@ -279,11 +283,27 @@ const base = '';
     color: #aaa;
     font-size: 1rem;
     line-height: 1.8;
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
   }
 
   .game-description-section p:last-child {
     margin-bottom: 0;
+  }
+
+  .highlight {
+    font-weight: 700;
+    color: #e8e8e8;
+    text-shadow: 0 0 8px rgba(169, 65, 65, 0.6), 0 0 16px rgba(169, 65, 65, 0.3);
+    animation: highlight-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes highlight-pulse {
+    0%, 100% {
+      text-shadow: 0 0 8px rgba(169, 65, 65, 0.6), 0 0 16px rgba(169, 65, 65, 0.3);
+    }
+    50% {
+      text-shadow: 0 0 12px rgba(169, 65, 65, 0.9), 0 0 24px rgba(169, 65, 65, 0.5), 0 0 36px rgba(169, 65, 65, 0.2);
+    }
   }
 
   .game-screenshots-section {
@@ -350,6 +370,10 @@ const base = '';
     content: '';
     display: block;
     padding-bottom: 56.25%;
+  }
+
+  .game-videos-container.square::before {
+    padding-bottom: 100%;
   }
 
   .game-video {
