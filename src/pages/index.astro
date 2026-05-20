@@ -126,7 +126,9 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
       <h2>The Team</h2>
       <div class="team-grid">
         <div class="team-member">
-          <Image src={shahinePortrait} alt="Shahine" class="member-portrait" width={850} loading="eager" />
+          <a href="https://pumpkinshosho.newgrounds.com/" target="_blank" rel="noopener noreferrer">
+            <Image src={shahinePortrait} alt="Shahine" class="member-portrait" width={850} loading="eager" />
+          </a>
           <div class="member-info member-info-center">
             <h3>Shahine</h3>
             <div class="member-tags">
@@ -136,7 +138,9 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
           </div>
         </div>
         <div class="team-member">
-          <Image src={liamPortrait} alt="Liam Valty" class="member-portrait" width={850} loading="eager" />
+          <a href="https://github.com/LiamTheCreat0r" target="_blank" rel="noopener noreferrer">
+            <Image src={liamPortrait} alt="Liam Valty" class="member-portrait" width={850} loading="eager" />
+          </a>
           <div class="member-info member-info-center">
             <h3>Liam Valty</h3>
             <div class="member-tags">
@@ -146,7 +150,9 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
           </div>
         </div>
         <div class="team-member">
-          <Image src={koticoPortrait} alt="Kotico" class="member-portrait" width={850} loading="eager" />
+          <a href="https://www.instagram.com/kotico.png/" target="_blank" rel="noopener noreferrer">
+            <Image src={koticoPortrait} alt="Kotico" class="member-portrait" width={850} loading="eager" />
+          </a>
           <div class="member-info member-info-center">
             <h3>Kotico</h3>
             <div class="member-tags">
@@ -650,7 +656,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTim
   }
 
   .team-member:hover {
-    transform: scale(1.02);
+    transform: scale(1.08);
   }
 
   .member-portrait {
