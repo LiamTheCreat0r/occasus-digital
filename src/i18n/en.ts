@@ -54,6 +54,7 @@ export const t = {
     fr: 'FR',
     es: 'ES',
     de: 'DE',
+    pt: 'PT',
   },
 };
 

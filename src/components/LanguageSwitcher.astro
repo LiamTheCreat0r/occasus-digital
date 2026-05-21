@@ -5,8 +5,9 @@ import flagUk from '../assets/images/flags/flag-uk.svg';
 import flagFrance from '../assets/images/flags/flag-france.svg';
 import flagSpain from '../assets/images/flags/flag-spain.svg';
 import flagGermany from '../assets/images/flags/flag-germany.svg';
+import flagPortugal from '../assets/images/flags/flag-portugal.svg';
 
-const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, de: flagGermany };
+const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, de: flagGermany, pt: flagPortugal };
 ---
 
 <div class="lang-switcher" id="lang-switcher"
@@ -14,6 +15,7 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
   data-flag-fr={flags.fr.src}
   data-flag-es={flags.es.src}
   data-flag-de={flags.de.src}
+  data-flag-pt={flags.pt.src}
 >
   <button type="button" class="lang-current" aria-label="Change language" aria-expanded="false" aria-controls="lang-dropdown">
     <Image src={flags[defaultLocale]} alt={defaultLocale.toUpperCase()} width={24} height={16} />
@@ -40,6 +42,7 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
     fr: switcher.dataset.flagFr,
     es: switcher.dataset.flagEs,
     de: switcher.dataset.flagDe,
+    pt: switcher.dataset.flagPt,
   };
 
   function getSavedLang() {

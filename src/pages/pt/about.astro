@@ -1,0 +1,16 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { t as en } from '../../i18n/en';
+import { t as fr } from '../../i18n/fr';
+import { t as es } from '../../i18n/es';
+import { t as de } from '../../i18n/de';
+import { t as pt } from '../../i18n/pt';
+
+const currentLocale = Astro.currentLocale ?? 'en';
+const translations = { en, fr, es, de, pt };
+const t = translations[currentLocale as keyof typeof translations] ?? en;
+---
+
+<PageLayout title={t.about.title} description={t.about.description}>
+  <h1 data-i18n="about.title">{t.about.title}</h1>
+</PageLayout>

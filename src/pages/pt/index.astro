@@ -1,0 +1,1234 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import logo from '../../assets/images/logos/excurse-software-logo.png';
+import babelCartridge from '../../assets/images/cartridges/babel-adventure-cartridge.png';
+import parabellumCartridge from '../../assets/images/cartridges/parabellum-rain-cartridge.png';
+import endhellCartridge from '../../assets/images/cartridges/endhell-cartridge.png';
+import spectraCollabCartridge from '../../assets/images/cartridges/spectra-collab-cartridge.png';
+
+import babelCover from '../../assets/images/game-covers/babel-adventure.png';
+import parabellumCover from '../../assets/images/game-covers/parabellum-rain.png';
+import endhellCover from '../../assets/images/game-covers/endhell.png';
+import spectraCollabCover from '../../assets/images/game-covers/spectra-collab.png';
+import instagramIcon from '../../assets/images/socials/Instagram_logo.png';
+import tiktokIcon from '../../assets/images/socials/Tiktok_icon.png';
+import twitterIcon from '../../assets/images/socials/Twitter_icon.png';
+import youtubeIcon from '../../assets/images/socials/Youtube_icon.png';
+import koticoPortrait from '../../assets/images/portraits/kotico.png';
+import liamPortrait from '../../assets/images/portraits/liam-valty.png';
+import shahinePortrait from '../../assets/images/portraits/shahine-rachidi.png';
+import { t as en } from '../../i18n/en';
+import { t as fr } from '../../i18n/fr';
+import { t as es } from '../../i18n/es';
+import { t as de } from '../../i18n/de';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const currentLocale = Astro.currentLocale ?? 'en';
+const translations = { en, fr, es, de };
+const t = translations[currentLocale as keyof typeof translations] ?? en;
+const homeUrl = getRelativeLocaleUrl(currentLocale);
+---
+
+<BaseLayout
+  title={t.home.title}
+  description={t.home.description}
+  type="website"
+  url="/"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Excurse Software",
+    "url": "https://excurse-software.studio",
+    "logo": "https://excurse-software.studio/favicon.png",
+    "sameAs": [
+      "https://x.com/excursesoftware",
+      "https://www.instagram.com/excurse_software/",
+      "https://www.tiktok.com/@excurse_software"
+    ],
+    "makesOffer": [
+      { "@type": "Product", "name": "Endhell", "category": "Video Game" },
+      { "@type": "Product", "name": "Parabellum Rain", "category": "Video Game" },
+      { "@type": "Product", "name": "Babel Adventure", "category": "Video Game" },
+      { "@type": "Product", "name": "Spectra Collab", "category": "Video Game" }
+    ]
+  }}
+>
+  <Navbar />
+
+  <section id="studio" class="section studio">
+    <div class="studio-video-bg">
+      <video muted loop playsinline class="bg-video active">
+        <source src="/videos/babel-1.webm" type="video/webm" />
+      </video>
+      <video muted loop playsinline class="bg-video">
+        <source src="/videos/babel-2.webm" type="video/webm" />
+      </video>
+      <video muted loop playsinline class="bg-video">
+        <source src="/videos/babel-3.webm" type="video/webm" />
+      </video>
+      <video muted loop playsinline class="bg-video">
+        <source src="/videos/parabellum-rain1.webm" type="video/webm" />
+      </video>
+      <video muted loop playsinline class="bg-video">
+        <source src="/videos/parabellum-rain2.webm" type="video/webm" />
+      </video>
+      <video muted loop playsinline class="bg-video">
+        <source src="/videos/parabellum-rain3.webm" type="video/webm" />
+      </video>
+      <video muted loop playsinline class="bg-video">
+        <source src="/videos/spectra-collab1.webm" type="video/webm" />
+      </video>
+      <video muted loop playsinline class="bg-video">
+        <source src="/videos/spectra-collab2.webm" type="video/webm" />
+      </video>
+    </div>
+    <div class="studio-content">
+      <div class="studio-logo-wrap">
+        <div class="studio-logo">
+          <Image src={logo} alt="Excurse Software" class="studio-logo-img" width={499} loading="eager" />
+          <div class="studio-logo-bar"></div>
+        </div>
+        <div class="studio-text">
+          <h1 data-i18n="home.title">{t.home.title}</h1>
+          <p class="tagline" data-i18n="home.tagline">{t.home.tagline}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="games" class="section games">
+    <h2 data-i18n="home.ourGames">{t.home.ourGames}</h2>
+    <div class="games-main">
+      <div class="games-cover-bg">
+        <div class="cover-layer" id="cover-layer-1"></div>
+        <div class="cover-layer" id="cover-layer-2"></div>
+      </div>
+      <div class="game-info">
+        <h3 class="game-title" id="game-title" data-i18n="gameInfo.endhell.title">{t.gameInfo.endhell.title}</h3>
+        <div class="game-info-right">
+          <p class="game-desc" id="game-desc" data-i18n="gameInfo.endhell.desc">{t.gameInfo.endhell.desc}</p>
+          <a href="/games/endhell" class="game-btn" id="game-btn" data-i18n="home.knowMore">{t.home.knowMore}</a>
+        </div>
+      </div>
+    <div class="games-content">
+      <div class="cartridge-wrap" data-cover="endhell">
+        <Image src={endhellCartridge} alt="Endhell" class="cartridge-img" width={799} loading="lazy" />
+        <p class="device-label">Endhell</p>
+      </div>
+      <div class="cartridge-wrap" data-cover="spectra-collab">
+        <Image src={spectraCollabCartridge} alt="Spectra Collab" class="cartridge-img" width={799} loading="lazy" />
+        <p class="device-label">Spectra Collab</p>
+      </div>
+      <div class="cartridge-wrap" data-cover="parabellum">
+        <Image src={parabellumCartridge} alt="Parabellum Rain" class="cartridge-img" width={799} loading="lazy" />
+        <p class="device-label">Parabellum Rain</p>
+      </div>
+      <div class="cartridge-wrap" data-cover="babel">
+        <Image src={babelCartridge} alt="Babel Adventure" class="cartridge-img" width={799} loading="lazy" />
+        <p class="device-label">Babel Adventure</p>
+      </div>
+    </div>
+  </section>
+
+<section id="team" class="section team">
+    <div class="team-section-bg">
+      <h2 data-i18n="home.theTeam">{t.home.theTeam}</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <a href="https://pumpkinshosho.newgrounds.com/" target="_blank" rel="noopener noreferrer">
+            <Image src={shahinePortrait} alt={t.team.shahine.name} class="member-portrait" width={850} loading="eager" />
+          </a>
+          <div class="member-info member-info-center">
+            <h3 data-i18n="team.shahine.name">{t.team.shahine.name}</h3>
+            <div class="member-tags">
+              <span class="tag" data-i18n="team.shahine.tag0">{t.team.shahine.tags[0]}</span>
+              <span class="tag" data-i18n="team.shahine.tag1">{t.team.shahine.tags[1]}</span>
+            </div>
+            <p class="member-desc" data-i18n="team.shahine.desc">{t.team.shahine.desc}</p>
+          </div>
+        </div>
+        <div class="team-member">
+          <a href="https://github.com/LiamTheCreat0r" target="_blank" rel="noopener noreferrer">
+            <Image src={liamPortrait} alt={t.team.liam.name} class="member-portrait" width={850} loading="eager" />
+          </a>
+          <div class="member-info member-info-center">
+            <h3 data-i18n="team.liam.name">{t.team.liam.name}</h3>
+            <div class="member-tags">
+              <span class="tag" data-i18n="team.liam.tag0">{t.team.liam.tags[0]}</span>
+              <span class="tag" data-i18n="team.liam.tag1">{t.team.liam.tags[1]}</span>
+            </div>
+            <p class="member-desc" data-i18n="team.liam.desc">{t.team.liam.desc}</p>
+          </div>
+        </div>
+        <div class="team-member">
+          <a href="https://www.instagram.com/kotico.png/" target="_blank" rel="noopener noreferrer">
+            <Image src={koticoPortrait} alt={t.team.kotico.name} class="member-portrait" width={850} loading="eager" />
+          </a>
+          <div class="member-info member-info-center">
+            <h3 data-i18n="team.kotico.name">{t.team.kotico.name}</h3>
+            <div class="member-tags">
+              <span class="tag" data-i18n="team.kotico.tag0">{t.team.kotico.tags[0]}</span>
+            </div>
+            <p class="member-desc" data-i18n="team.kotico.desc">{t.team.kotico.desc}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog" class="section blog">
+    <h2 data-i18n="home.blog">{t.home.blog}</h2>
+    <div class="blog-grid">
+      {
+        posts.map((post) => (
+          <article class="blog-card">
+            <a href={`/blog/${post.id}`} class="blog-card-link">
+              {post.data.heroImage && (
+                <img src={post.data.heroImage} alt={post.data.title} class="blog-thumbnail" loading="lazy" />
+              )}
+              <div class="blog-card-content">
+                <h3>{post.data.title}</h3>
+                <time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toDateString()}</time>
+                <p>{post.data.description}</p>
+                {post.data.tags.length > 0 && (
+                  <div class="blog-tags">
+                    {post.data.tags.map((tag) => <span class="blog-tag">{tag}</span>)}
+                  </div>
+                )}
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-socials">
+        <a class="social-link" aria-label={t.socials.twitter} data-i18n-aria="socials.twitter" href="https://x.com/excursesoftware" target="_blank" rel="noopener noreferrer">
+          <Image src={twitterIcon} alt={t.socials.twitter} data-i18n-alt="socials.twitter" width={56} height={56} loading="lazy" quality={100} format="png" />
+        </a>
+        <a class="social-link" aria-label={t.socials.instagram} data-i18n-aria="socials.instagram" href="https://www.instagram.com/excurse_software/" target="_blank" rel="noopener noreferrer">
+          <Image src={instagramIcon} alt={t.socials.instagram} data-i18n-alt="socials.instagram" width={56} height={56} loading="lazy" quality={100} format="png" />
+        </a>
+        <a class="social-link" aria-label={t.socials.tiktok} data-i18n-aria="socials.tiktok" href="https://www.tiktok.com/@excurse_software" target="_blank" rel="noopener noreferrer">
+          <Image src={tiktokIcon} alt={t.socials.tiktok} data-i18n-alt="socials.tiktok" width={56} height={56} loading="lazy" quality={100} format="png" />
+        </a>
+        <a class="social-link" aria-label={t.socials.youtube} data-i18n-aria="socials.youtube">
+          <Image src={youtubeIcon} alt={t.socials.youtube} data-i18n-alt="socials.youtube" width={56} height={56} loading="lazy" quality={100} format="png" />
+        </a>
+      </div>
+      <p class="footer-copy" data-i18n="footer.copyright">{t.footer.copyright}</p>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap');
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif !important;
+    color: #e8e8e8 !important;
+    background: #0a0a0a !important;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.15) 2px,
+      rgba(0, 0, 0, 0.15) 4px
+    );
+  }
+
+  #menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #a94141;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+
+  #menu-bar.visible {
+    transform: translateY(0);
+  }
+
+  .menu-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 0.6rem 2rem;
+  }
+
+  .menu-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    line-height: 0;
+    text-decoration: none;
+  }
+
+  .menu-logo {
+    height: 32px;
+    width: auto;
+    transition: opacity 0.2s;
+  }
+
+  .menu-logo:hover {
+    opacity: 0.7;
+  }
+
+  .menu-brand {
+    font-family: 'Anton', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #e8e8e8;
+    transition: opacity 0.2s;
+  }
+
+  .menu-logo-link:hover .menu-brand {
+    opacity: 0.7;
+  }
+
+  .menu-links {
+    display: flex;
+    gap: 2.5rem;
+    margin-left: auto;
+  }
+
+  .menu-link {
+    color: #a94141;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+
+  .menu-link:hover {
+    color: #e8e8e8;
+  }
+
+  .section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    position: relative;
+  }
+
+  .studio {
+    background: radial-gradient(ellipse at 50% 0%, #1a0a0a 0%, #0a0a0a 70%);
+    overflow: hidden;
+  }
+
+  .studio-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease;
+    filter: blur(8px) brightness(0.6);
+    transform: scale(1.1);
+  }
+
+  .bg-video.active {
+    opacity: 0.4;
+  }
+
+  .studio-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .studio-logo-wrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .studio-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .studio-logo-bar {
+    width: 2px;
+    height: 130px;
+    background: #a94141;
+    margin-left: 2.5rem;
+  }
+
+  .studio-logo-img {
+    width: 180px;
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(169, 65, 65, 0.3));
+  }
+
+  .studio-text h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: #a94141;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .tagline {
+    font-size: 1rem;
+    color: #888;
+    max-width: 440px;
+    line-height: 1.8;
+  }
+
+.games {
+    background: transparent;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .games-main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem;
+  }
+
+  .games-cover-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .cover-layer {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    transform: scale(0.8);
+  }
+
+  .cover-layer.active {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+
+  .games h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #a94141;
+    position: relative;
+    z-index: 2;
+    margin: 2rem 0;
+  }
+
+  .game-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
+    padding: 2rem 3rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .game-info.visible {
+    opacity: 1;
+  }
+
+  .game-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #e8e8e8;
+    white-space: nowrap;
+    margin: 0;
+    padding-right: 3rem;
+    border-right: 2px solid #a94141;
+  }
+
+  .game-info-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .game-desc {
+    font-size: 1rem;
+    color: #aaa;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 450px;
+  }
+
+  .game-btn {
+    display: block;
+    width: fit-content;
+    margin: 1rem auto 0;
+    padding: 0.75rem 2rem;
+    background: transparent;
+    border: 1px solid #a94141;
+    color: #a94141;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .game-btn:hover {
+    background: #a94141;
+    color: #fff;
+  }
+
+  .games-content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3rem;
+    width: 100%;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    margin: auto auto 0;
+    padding-bottom: 2rem;
+  }
+
+.cartridge-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    width: 140px;
+  }
+
+ .cartridge-img {
+    width: 140px;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+  }
+
+  .cartridge-wrap.selected .cartridge-img {
+    transform: translateY(-25px) scale(1);
+    filter: drop-shadow(0 12px 30px rgba(169, 65, 65, 0.35));
+    position: relative;
+    z-index: 1;
+  }
+
+  .cartridge-img:hover {
+    transform: scale(1.1) translateY(-30px);
+    filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.5));
+  }
+
+  .device-label {
+    margin-top: 1.2rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #666;
+    width: 140px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.4rem 0.2rem;
+    border-radius: 10px;
+    color: #fff;
+  }
+
+  .team {
+    background: #0a0a0a;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .team-section-bg {
+    background-color: transparent;
+  }
+
+  .team h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #a94141;
+    text-align: center;
+  }
+
+  .team h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a94141;
+  }
+
+  .team .tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #a94141;
+    border: 1px solid #a94141;
+    border-radius: 4px;
+  }
+
+  .team-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 3rem;
+    row-gap: 0;
+    flex-wrap: wrap;
+    padding-top: 4rem;
+  }
+
+  .team-bottom {
+    margin-top: -2rem;
+  }
+
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    transition: transform 0.3s;
+    margin: 2rem 2rem 0;
+  }
+
+  .team-member-column {
+    flex-direction: column;
+  }
+
+  .team-member:hover {
+    transform: scale(1.08);
+  }
+
+  .member-portrait {
+    border-radius: 8px;
+    flex-shrink: 0;
+    object-fit: cover;
+    width: 350px;
+    height: auto;
+  }
+
+  .member-info {
+    text-align: left;
+  }
+
+  .member-info-right {
+    text-align: right;
+  }
+
+  .member-info-center {
+    text-align: center;
+  }
+
+  .member-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a94141;
+  }
+
+  .member-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #a94141;
+    border: 1px solid #a94141;
+    border-radius: 4px;
+  }
+
+  .member-desc {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #888;
+    max-width: 320px;
+  }
+
+  .blog {
+    background: transparent;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .blog h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #a94141;
+  }
+
+  .blog-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .blog-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #222;
+    border-radius: 8px;
+    transition: border-color 0.3s, transform 0.3s;
+    flex: 1 1 300px;
+    max-width: 360px;
+    overflow: hidden;
+  }
+
+  .blog-card:hover {
+    border-color: #a94141;
+    transform: translateY(-4px);
+  }
+
+  .blog-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .blog-thumbnail {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .blog-card-content {
+    padding: 1.5rem;
+  }
+
+  .blog-card-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e8e8e8;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .blog-card-content time {
+    display: block;
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .blog-card-content p {
+    color: #888;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .blog-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .blog-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #a94141;
+    border: 1px solid #a94141;
+    border-radius: 4px;
+  }
+
+  #footer {
+    background: #0a0a0a;
+    border-top: 1px solid #1a1a1a;
+    padding: 3rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease, opacity 0.2s;
+  }
+
+  .social-link:hover {
+    opacity: 0.8;
+    transform: scale(1.15);
+  }
+
+  .social-link img {
+    height: 48px;
+    width: auto;
+  }
+
+  .footer-copy {
+    color: #444;
+    font-size: 0.8rem;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #e8e8e8;
+    border-radius: 1px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  @media (max-width: 768px) {
+    .menu-inner {
+      gap: 1rem;
+      padding: 0.6rem 1rem;
+    }
+
+    .menu-toggle {
+      display: flex;
+      margin-left: auto;
+    }
+
+    .menu-links {
+      position: fixed;
+      top: 56px;
+      left: 0;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #a94141;
+      padding: 1.5rem;
+      gap: 1.25rem;
+      margin-left: 0;
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .menu-links.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-link {
+      font-size: 0.9rem;
+    }
+
+    .studio-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .studio-logo-wrap {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .studio-logo-bar {
+      display: none;
+    }
+
+    .studio-text h1 {
+      font-size: 2.5rem;
+    }
+
+    .tagline {
+      max-width: 100%;
+    }
+
+    .games-content {
+      gap: 3rem;
+    }
+
+    .game-info {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.75rem;
+      padding: 1.25rem;
+      border-radius: 8px;
+      max-width: 85%;
+      width: 85%;
+    }
+
+    .game-title {
+      padding-right: 0;
+      border-right: none;
+      border-bottom: 2px solid #a94141;
+      padding-bottom: 0.5rem;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+
+    .game-info-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 0.5rem;
+    }
+
+    .game-desc {
+      font-size: 0.8rem;
+    }
+
+    .game-btn {
+      padding: 0.5rem 1.5rem;
+      font-size: 0.7rem;
+    }
+
+    .games-main {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: 1rem;
+      padding: 3rem 1rem;
+    }
+
+    .game-info {
+      flex: 0 0 calc(50% - 0.5rem);
+      max-width: calc(50% - 0.5rem);
+    }
+
+    .games-content {
+      flex: 0 0 calc(50% - 0.5rem);
+      max-width: calc(50% - 0.5rem);
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .games {
+      flex-direction: column;
+    }
+
+    .games h2 {
+      font-size: 2rem;
+    }
+
+.cartridge-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80px;
+    }
+
+    .cartridge-img {
+      width: 60px;
+    }
+
+    .device-label {
+      width: 80px;
+      font-size: 0.6rem;
+    }
+
+    .cartridge-img {
+      width: 60px;
+    }
+
+    .device-label {
+      width: 100px;
+      font-size: 0.65rem;
+    }
+
+    .cartridge-wrap.selected {
+      opacity: 1;
+    }
+
+    .blog h2 {
+      font-size: 2rem;
+    }
+
+    .team {
+      background: #0a0a0a;
+    }
+
+    .team-section-bg {
+      padding: 2rem;
+    }
+
+    .team-grid {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .team-bottom {
+      margin-top: 0;
+    }
+
+    .team-member {
+      flex-direction: column;
+    }
+
+    .member-portrait {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+    }
+
+    .member-info-right {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .menu-links {
+      padding: 1rem;
+      gap: 0.75rem;
+    }
+
+    .games-content {
+      margin-left: 1rem;
+    }
+  }
+</style>
+
+<script define:vars={{ gameInfo: t.gameInfo }}>
+  const menuBar = document.getElementById('menu-bar');
+  const studio = document.getElementById('studio');
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      menuBar.classList.toggle('visible', !entry.isIntersecting);
+    },
+    { threshold: 0 }
+  );
+
+  if (studio) observer.observe(studio);
+
+  document.querySelectorAll('.menu-link').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('.menu-toggle')?.classList.remove('active');
+      document.querySelector('.menu-links')?.classList.remove('open');
+    });
+  });
+
+  document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+    document.querySelector('.menu-toggle')?.classList.toggle('active');
+    document.querySelector('.menu-links')?.classList.toggle('open');
+  });
+
+  const covers = {
+    babel: 'url(/images/game-covers/babel-adventure.png)',
+    parabellum: 'url(/images/game-covers/parabellum-rain.png)',
+    endhell: 'url(/images/game-covers/endhell.png)',
+    'spectra-collab': 'url(/images/game-covers/spectra-collab.png)'
+  };
+
+  const gameTitleEl = document.getElementById('game-title');
+  const gameDescEl = document.getElementById('game-desc');
+  const gamesSection = document.getElementById('games');
+  const layer1 = document.getElementById('cover-layer-1');
+  const layer2 = document.getElementById('cover-layer-2');
+  const cartridges = document.querySelectorAll('.cartridge-wrap');
+  let selectedCover = null;
+  let activeLayer = 1;
+
+  if (cartridges.length > 0) {
+    const firstCartridge = cartridges[0];
+    selectedCover = firstCartridge.dataset.cover;
+    firstCartridge.classList.add('selected');
+    setCover(covers[selectedCover]);
+    updateGameInfo(selectedCover);
+  }
+
+  function updateGameInfo(key) {
+    if (gameInfo[key]) {
+      gameTitleEl.textContent = gameInfo[key].title;
+      gameDescEl.textContent = gameInfo[key].desc;
+      const gameBtn = document.getElementById('game-btn');
+      if (gameBtn) gameBtn.href = `/games/${key}`;
+      const gameInfoContainer = document.querySelector('.game-info');
+      if (gameInfoContainer) gameInfoContainer.classList.add('visible');
+    }
+  }
+
+  function setCover(coverUrl) {
+    if (activeLayer === 1) {
+      layer2.style.backgroundImage = coverUrl;
+      layer1.classList.remove('active');
+      layer2.classList.add('active');
+      activeLayer = 2;
+    } else {
+      layer1.style.backgroundImage = coverUrl;
+      layer2.classList.remove('active');
+      layer1.classList.add('active');
+      activeLayer = 1;
+    }
+  }
+
+  function clearCover() {
+    if (activeLayer === 1) {
+      layer1.classList.remove('active');
+    } else {
+      layer2.classList.remove('active');
+    }
+  }
+
+  cartridges.forEach((cartridge) => {
+    const coverKey = cartridge.dataset.cover;
+    const coverUrl = covers[coverKey];
+
+    cartridge.addEventListener('mouseenter', () => {
+      cartridges.forEach(c => c.classList.remove('selected'));
+      selectedCover = coverKey;
+      cartridge.classList.add('selected');
+      setCover(coverUrl);
+      updateGameInfo(coverKey);
+    });
+
+    cartridge.addEventListener('click', () => {
+      window.location.href = `/games/${coverKey}`;
+    });
+  });
+
+  const bgVideos = document.querySelectorAll('.bg-video');
+  let currentVideo = 0;
+
+  if (bgVideos.length > 0) {
+    bgVideos[0].classList.add('active');
+    bgVideos[0].play();
+    
+    setInterval(() => {
+      bgVideos[currentVideo].pause();
+      bgVideos[currentVideo].classList.remove('active');
+      let nextVideo;
+      do {
+        nextVideo = Math.floor(Math.random() * bgVideos.length);
+      } while (nextVideo === currentVideo && bgVideos.length > 1);
+      currentVideo = nextVideo;
+      bgVideos[currentVideo].classList.add('active');
+      bgVideos[currentVideo].play();
+    }, 5000);
+  }
+</script>

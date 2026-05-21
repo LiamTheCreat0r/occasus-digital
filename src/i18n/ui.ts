@@ -319,10 +319,93 @@ Es ist voller Easter Eggs, geheimer Codes, Skizzen, Design-Dokumente und wunderl
     'lang.fr': 'FR',
     'lang.es': 'ES',
     'lang.de': 'DE',
+    'lang.pt': 'PT',
     'lang.changeLanguage': 'Sprache ändern',
+  },
+  pt: {
+    'nav.theStudio': 'O Estúdio',
+    'nav.ourGames': 'Nossos Jogos',
+    'nav.theTeam': 'A Equipe',
+    'nav.blog': 'Blog',
+    'nav.toggleMenu': 'Alternar menu',
+    'home.title': 'Excurse Software',
+    'home.description': 'Um estúdio de jogos criando experiências únicas e imaginativas. Criadores de Endhell, Parabellum Rain, Babel Adventure e Spectra Collab.',
+    'home.tagline': 'Uma equipe de artistas apaixonados, nada mais, nada menos.',
+    'home.ourGames': 'Nossos Jogos',
+    'home.theTeam': 'A Equipe',
+    'home.blog': 'Blog',
+    'home.knowMore': 'Saiba Mais',
+    'home.supportUs': 'Apoie-nos',
+    'home.supportUsAria': 'Apoie-nos no Ko-fi',
+    'footer.copyright': '© 2026 Liam Valty - Excurse Software. Todos os direitos reservados.',
+    'game.availableOn': 'Disponível em',
+    'game.screenshot': 'captura de tela',
+    'gameInfo.endhell.title': 'Endhell',
+    'gameInfo.endhell.desc': 'FPS e Endless Runner!',
+    'gameInfo.spectra-collab.title': 'Spectra Collab',
+    'gameInfo.spectra-collab.desc': 'Um espaço virtual interativo e colaborativo!',
+    'gameInfo.parabellum.title': 'Parabellum Rain',
+    'gameInfo.parabellum.desc': 'Um platformer/RPG único onde a chuva é sua aliada...',
+    'gameInfo.babel.title': 'Babel Adventure',
+    'gameInfo.babel.desc': 'Um jogo de plataforma onde pular é proibido! Você terá que subir pela escada!',
+    'game.endhell.title': 'Endhell',
+    'game.endhell.desc': `Um jogo mobile, também jogável no PC.
+
+ENDHELL se passa em um universo infernal (quem diria?) — é uma mistura de FPS e Endless Runner!
+
+Armas, skins, áreas desbloqueáveis e muito mais!
+
+Você pode jogar GRÁTIS`,
+    'game.parabellum.title': 'Parabellum Rain',
+    'game.parabellum.desc': `Em Parabellum Rain, você é Izmael: um office boy depressivo desgastado pela vida cujo único amigo é seu próprio guarda-chuva sarcástico e ganancioso.
+
+Neste platformer 2D action-RPG, você usará as gotas de água para se impulsionar, atacar e destruir seus oponentes!
+
+Cada dia, ao ir para o trabalho, a cidade será transformada por eventos tão bizarros quanto inesperados — animais mutantes, políticos sanguinários, criaturas cósmicas...
+
+Descubra uma cidade com habitantes distorcidos e niilistas e descubra a fonte do mal.
+
+Disponível gratuitamente no Newgrounds e itch.io`,
+    'game.babel.title': 'Babel Adventure',
+    'game.babel.desc': `Nosso primeiro jogo para PC!
+
+É um platformer semi-roguelike onde você não pode pular nem atacar! Boa sorte subindo toda a torre sem cair — acredite, isso NÃO é nada fácil.
+
+E ainda é GRÁTIS`,
+    'game.spectra-collab.title': 'Spectra Collab',
+    'game.spectra-collab.desc': `Spectra Collab é um espaço virtual interativo com centenas de caixas de jogos imaginárias!
+
+Um projeto colaborativo massivo organizado por Kotico e inteiramente programado por Liam Valty, reunindo cerca de cem ilustradores e músicos profissionais.
+
+Está repleto de easter eggs, códigos secretos, esboços, documentos de design e descrições caprichosas que estimulam a imaginação de todos!`,
+    'team.shahine.name': 'Shahine',
+    'team.shahine.tag0': 'Artista',
+    'team.shahine.tag1': 'Game Designer',
+    'team.shahine.desc': 'Artista, mas não só. Nunca se contenta em trabalhar em um único campo — sua curiosidade o leva a explorar diversas disciplinas. Sua vontade de superar limites é inesgotável. Abstrato, sistêmico; ele é um ser sensível e profundamente original.',
+    'team.liam.name': 'Liam Valty',
+    'team.liam.tag0': 'Desenvolvedor',
+    'team.liam.tag1': 'Game Designer',
+    'team.liam.desc': 'Criativo e meticuloso, cuida de cada detalhe; fascinado por tecnologia, um programador habilidoso. Acima de tudo, continua sendo um verdadeiro artista. Sua primeira paixão e único guia é a criação, que ele pratica com fervor.',
+    'team.kotico.name': 'Kotico',
+    'team.kotico.tag0': 'Artista',
+    'team.kotico.desc': 'Ilustrador com múltiplos talentos e facetas, um universo completo com personagens variados sempre vive dentro dele. Criar não é uma opção para ele: ele nunca vai parar. Também reconhecido por seu humor e alegria que o tornam irresistível!',
+    'socials.twitter': 'Twitter',
+    'socials.instagram': 'Instagram',
+    'socials.tiktok': 'TikTok',
+    'socials.youtube': 'YouTube',
+    'about.title': 'Sobre',
+    'about.description': 'Conheça a Excurse Software — uma equipe de artistas apaixonados criando experiências únicas de jogos.',
+    'blogIndex.title': 'Blog',
+    'blogIndex.description': 'Notícias, atualizações e conteúdo dos bastidores da Excurse Software.',
+    'lang.en': 'EN',
+    'lang.fr': 'FR',
+    'lang.es': 'ES',
+    'lang.de': 'DE',
+    'lang.pt': 'PT',
+    'lang.changeLanguage': 'Mudar idioma',
   },
 } as const;
 
 export type Locale = keyof typeof translations;
-export const locales: Locale[] = ['en', 'fr', 'es', 'de'];
+export const locales: Locale[] = ['en', 'fr', 'es', 'de', 'pt'];
 export const defaultLocale: Locale = 'en';
