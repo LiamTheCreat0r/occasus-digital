@@ -11,6 +11,13 @@ import itchIcon from '../assets/images/socials/Itchio_Logo_FR.png';
 import newgroundsIcon from '../assets/images/socials/Newgrounds_Logo_FR.png';
 import type { Game } from '../data/games';
 import type { ImageMetadata } from 'astro';
+import { t as en } from '../i18n/en';
+import { t as fr } from '../i18n/fr';
+import { t as es } from '../i18n/es';
+
+const currentLocale = Astro.currentLocale ?? 'en';
+const translations = { en, fr, es };
+const t = translations[currentLocale as keyof typeof translations] ?? en;
 
 export interface Props {
   title: string;
@@ -47,12 +54,12 @@ const jsonLd = {
     <Image src={cover} alt={game.title} class="game-hero-img" />
   </div>
   <div class="game-page">
-    <h1 class="game-page-title">{game.title}</h1>
+    <h1 class="game-page-title" data-i18n={`game.${game.slug}.title`}>{game.title}</h1>
     <div class="game-page-content">
-      <div class="game-description-section">
+      <div class="game-description-section" data-game-desc={game.slug}>
         {game.description.split(/\n+/).map((paragraph) => <p set:html={renderDescription(paragraph.trim())}></p>)}
     <div class="game-available">
-      <p class="game-available-label">Available on</p>
+      <p class="game-available-label" data-i18n="game.availableOn">{t.game.availableOn}</p>
       <div class="game-available-links">
         {
           game.itchUrl && (
@@ -74,7 +81,7 @@ const jsonLd = {
       <div class="game-screenshots-section">
         {
           screenshots.map((img) => (
-            <Image src={img} alt={`${game.title} screenshot`} class="game-screenshot" data-full={img.src} />
+            <Image src={img} alt={`${game.title} ${t.game.screenshot}`} class="game-screenshot" data-full={img.src} />
           ))
         }
       </div>
@@ -106,25 +113,25 @@ const jsonLd = {
   <footer id="game-footer">
     <div class="footer-inner">
       <div class="footer-socials">
-        <a class="social-link" aria-label="Twitter" href="https://x.com/excursesoftware" target="_blank" rel="noopener noreferrer">
-          <Image src={twitterIcon} alt="Twitter" width={48} height={48} loading="lazy" quality={100} format="png" />
+        <a class="social-link" aria-label={t.socials.twitter} data-i18n-aria="socials.twitter" href="https://x.com/excursesoftware" target="_blank" rel="noopener noreferrer">
+          <Image src={twitterIcon} alt={t.socials.twitter} data-i18n-alt="socials.twitter" width={48} height={48} loading="lazy" quality={100} format="png" />
         </a>
-        <a class="social-link" aria-label="Instagram" href="https://www.instagram.com/excurse_software/" target="_blank" rel="noopener noreferrer">
-          <Image src={instagramIcon} alt="Instagram" width={48} height={48} loading="lazy" quality={100} format="png" />
+        <a class="social-link" aria-label={t.socials.instagram} data-i18n-aria="socials.instagram" href="https://www.instagram.com/excurse_software/" target="_blank" rel="noopener noreferrer">
+          <Image src={instagramIcon} alt={t.socials.instagram} data-i18n-alt="socials.instagram" width={48} height={48} loading="lazy" quality={100} format="png" />
         </a>
-        <a class="social-link" aria-label="TikTok" href="https://www.tiktok.com/@excurse_software" target="_blank" rel="noopener noreferrer">
-          <Image src={tiktokIcon} alt="TikTok" width={48} height={48} loading="lazy" quality={100} format="png" />
+        <a class="social-link" aria-label={t.socials.tiktok} data-i18n-aria="socials.tiktok" href="https://www.tiktok.com/@excurse_software" target="_blank" rel="noopener noreferrer">
+          <Image src={tiktokIcon} alt={t.socials.tiktok} data-i18n-alt="socials.tiktok" width={48} height={48} loading="lazy" quality={100} format="png" />
         </a>
-        <a class="social-link" aria-label="YouTube">
-          <Image src={youtubeIcon} alt="YouTube" width={48} height={48} loading="lazy" quality={100} format="png" />
+        <a class="social-link" aria-label={t.socials.youtube} data-i18n-aria="socials.youtube">
+          <Image src={youtubeIcon} alt={t.socials.youtube} data-i18n-alt="socials.youtube" width={48} height={48} loading="lazy" quality={100} format="png" />
         </a>
       </div>
-      <p class="footer-copy">&copy; 2026 Liam Valty - Excurse Software. All rights reserved.</p>
+      <p class="footer-copy" data-i18n="footer.copyright">{t.footer.copyright}</p>
     </div>
   </footer>
-  <a class="kofi-button" aria-label="Support us on Ko-fi">
+  <a class="kofi-button" aria-label={t.home.supportUsAria} data-i18n-aria="home.supportUsAria">
     <Image src={kofiIcon} alt="Ko-fi" width={24} height={24} loading="lazy" quality={90} />
-    <span>Support Us</span>
+    <span data-i18n="home.supportUs">{t.home.supportUs}</span>
   </a>
 </BaseLayout>
 

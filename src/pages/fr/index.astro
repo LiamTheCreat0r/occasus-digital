@@ -1,34 +1,35 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Navbar from '../components/Navbar.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import logo from '../assets/images/logos/excurse-software-logo.png';
-import babelCartridge from '../assets/images/cartridges/babel-adventure-cartridge.png';
-import parabellumCartridge from '../assets/images/cartridges/parabellum-rain-cartridge.png';
-import endhellCartridge from '../assets/images/cartridges/endhell-cartridge.png';
-import spectraCollabCartridge from '../assets/images/cartridges/spectra-collab-cartridge.png';
+import logo from '../../assets/images/logos/excurse-software-logo.png';
+import babelCartridge from '../../assets/images/cartridges/babel-adventure-cartridge.png';
+import parabellumCartridge from '../../assets/images/cartridges/parabellum-rain-cartridge.png';
+import endhellCartridge from '../../assets/images/cartridges/endhell-cartridge.png';
+import spectraCollabCartridge from '../../assets/images/cartridges/spectra-collab-cartridge.png';
 
-import babelCover from '../assets/images/game-covers/babel-adventure.png';
-import parabellumCover from '../assets/images/game-covers/parabellum-rain.png';
-import endhellCover from '../assets/images/game-covers/endhell.png';
-import spectraCollabCover from '../assets/images/game-covers/spectra-collab.png';
-import instagramIcon from '../assets/images/socials/Instagram_logo.png';
-import tiktokIcon from '../assets/images/socials/Tiktok_icon.png';
-import twitterIcon from '../assets/images/socials/Twitter_icon.png';
-import youtubeIcon from '../assets/images/socials/Youtube_icon.png';
-import kofiIcon from '../assets/images/socials/Kofi_icon.png';
-import koticoPortrait from '../assets/images/portraits/kotico.png';
-import liamPortrait from '../assets/images/portraits/liam-valty.png';
-import shahinePortrait from '../assets/images/portraits/shahine-rachidi.png';
-import { t as en } from '../i18n/en';
-import { t as fr } from '../i18n/fr';
+import babelCover from '../../assets/images/game-covers/babel-adventure.png';
+import parabellumCover from '../../assets/images/game-covers/parabellum-rain.png';
+import endhellCover from '../../assets/images/game-covers/endhell.png';
+import spectraCollabCover from '../../assets/images/game-covers/spectra-collab.png';
+import instagramIcon from '../../assets/images/socials/Instagram_logo.png';
+import tiktokIcon from '../../assets/images/socials/Tiktok_icon.png';
+import twitterIcon from '../../assets/images/socials/Twitter_icon.png';
+import youtubeIcon from '../../assets/images/socials/Youtube_icon.png';
+import kofiIcon from '../../assets/images/socials/Kofi_icon.png';
+import koticoPortrait from '../../assets/images/portraits/kotico.png';
+import liamPortrait from '../../assets/images/portraits/liam-valty.png';
+import shahinePortrait from '../../assets/images/portraits/shahine-rachidi.png';
+import { t as en } from '../../i18n/en';
+import { t as fr } from '../../i18n/fr';
+import { t as es } from '../../i18n/es';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 const currentLocale = Astro.currentLocale ?? 'en';
-const translations = { en, fr };
+const translations = { en, fr, es };
 const t = translations[currentLocale as keyof typeof translations] ?? en;
 const homeUrl = getRelativeLocaleUrl(currentLocale);
 ---

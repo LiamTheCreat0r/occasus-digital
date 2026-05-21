@@ -1,21 +1,30 @@
 ---
 import { Image } from 'astro:assets';
 import logoAlternate from '../assets/images/logos/excurse-software-logo-alternate.png';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { t as en } from '../i18n/en';
+import { t as fr } from '../i18n/fr';
+import { t as es } from '../i18n/es';
+
+const currentLocale = Astro.currentLocale ?? 'en';
+const translations = { en, fr, es };
+const t = translations[currentLocale as keyof typeof translations] ?? en;
+const homeUrl = getRelativeLocaleUrl(currentLocale);
 ---
 
 <nav id="menu-bar">
   <div class="menu-inner">
-    <a href="/" class="menu-logo-link">
+    <a href={homeUrl} class="menu-logo-link">
       <Image src={logoAlternate} alt="Excurse Software" class="menu-logo" height={32} loading="eager" quality={90} />
       <span class="menu-brand">Excurse Software</span>
     </a>
     <div class="menu-links">
-      <a href="/#studio" class="menu-link">The Studio</a>
-      <a href="/#games" class="menu-link">Our Games</a>
-      <a href="/#team" class="menu-link">The Team</a>
-      <a href="/#blog" class="menu-link">Blog</a>
+      <a href={`${homeUrl}#studio`} class="menu-link" data-i18n="nav.theStudio">{t.nav.theStudio}</a>
+      <a href={`${homeUrl}#games`} class="menu-link" data-i18n="nav.ourGames">{t.nav.ourGames}</a>
+      <a href={`${homeUrl}#team`} class="menu-link" data-i18n="nav.theTeam">{t.nav.theTeam}</a>
+      <a href={`${homeUrl}#blog`} class="menu-link" data-i18n="nav.blog">{t.nav.blog}</a>
     </div>
-    <button class="menu-toggle" aria-label="Toggle menu">
+    <button class="menu-toggle" aria-label={t.nav.toggleMenu} data-i18n-aria="nav.toggleMenu">
       <span></span>
       <span></span>
       <span></span>

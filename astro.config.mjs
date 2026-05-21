@@ -6,4 +6,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://excurse-software.studio',
   integrations: [sitemap()],
+  i18n: {
+    locales: ['en', 'fr', 'es'],
+    defaultLocale: 'en',
+  },
 });

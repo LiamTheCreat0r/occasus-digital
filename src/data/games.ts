@@ -17,7 +17,7 @@ export const games: Game[] = [
 
 Unlockable **weapons**, **skins**, **areas** and so much more!
 
-You can play it for **FREE** (wow)`,
+You can play it for **FREE**`,
         videos: [],
         itchUrl: "https://excurse-software.itch.io/",
         newgroundsUrl: "https://www.newgrounds.com/",
@@ -33,7 +33,7 @@ Every day, as you go to work, the city will be changed by events as bizarre as t
 
 Discover a city with twisted and nihilistic inhabitants and uncover the source of evil.
 
-Available for free on **Newgrounds** and **itch.io**, and when I say it's free, it's like FREE, like you don't have to pay or what, it's FREE FREE FREE (wow)`,
+Available for free on **Newgrounds** and **itch.io**`,
         videos: [
             "parabellum-rain1.webm",
             "parabellum-rain2.webm",

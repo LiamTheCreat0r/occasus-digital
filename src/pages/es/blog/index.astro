@@ -1,9 +1,9 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
+import PageLayout from '../../../layouts/PageLayout.astro';
 import { getCollection } from 'astro:content';
-import { t as en } from '../../i18n/en';
-import { t as fr } from '../../i18n/fr';
-import { t as es } from '../../i18n/es';
+import { t as en } from '../../../i18n/en';
+import { t as fr } from '../../../i18n/fr';
+import { t as es } from '../../../i18n/es';
 
 const posts = await getCollection('blog');
 

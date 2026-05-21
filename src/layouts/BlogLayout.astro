@@ -7,6 +7,12 @@ import instagramIcon from '../assets/images/socials/Instagram_logo.png';
 import tiktokIcon from '../assets/images/socials/Tiktok_icon.png';
 import youtubeIcon from '../assets/images/socials/Youtube_icon.png';
 import kofiIcon from '../assets/images/socials/Kofi_icon.png';
+import { t as en } from '../i18n/en';
+import { t as fr } from '../i18n/fr';
+
+const currentLocale = Astro.currentLocale ?? 'en';
+const translations = { en, fr };
+const t = translations[currentLocale as keyof typeof translations] ?? en;
 
 export interface Props {
   title: string;
@@ -36,25 +42,25 @@ const { title, description, pubDate, heroImage } = Astro.props;
   <footer id="blog-footer">
     <div class="footer-inner">
       <div class="footer-socials">
-        <a class="social-link" aria-label="Twitter" href="https://x.com/excursesoftware" target="_blank" rel="noopener noreferrer">
-          <Image src={twitterIcon} alt="Twitter" width={48} height={48} loading="lazy" quality={100} format="png" />
+        <a class="social-link" aria-label={t.socials.twitter} data-i18n-aria="socials.twitter" href="https://x.com/excursesoftware" target="_blank" rel="noopener noreferrer">
+          <Image src={twitterIcon} alt={t.socials.twitter} data-i18n-alt="socials.twitter" width={48} height={48} loading="lazy" quality={100} format="png" />
         </a>
-        <a class="social-link" aria-label="Instagram" href="https://www.instagram.com/excurse_software/" target="_blank" rel="noopener noreferrer">
-          <Image src={instagramIcon} alt="Instagram" width={48} height={48} loading="lazy" quality={100} format="png" />
+        <a class="social-link" aria-label={t.socials.instagram} data-i18n-aria="socials.instagram" href="https://www.instagram.com/excurse_software/" target="_blank" rel="noopener noreferrer">
+          <Image src={instagramIcon} alt={t.socials.instagram} data-i18n-alt="socials.instagram" width={48} height={48} loading="lazy" quality={100} format="png" />
         </a>
-        <a class="social-link" aria-label="TikTok" href="https://www.tiktok.com/@excurse_software" target="_blank" rel="noopener noreferrer">
-          <Image src={tiktokIcon} alt="TikTok" width={48} height={48} loading="lazy" quality={100} format="png" />
+        <a class="social-link" aria-label={t.socials.tiktok} data-i18n-aria="socials.tiktok" href="https://www.tiktok.com/@excurse_software" target="_blank" rel="noopener noreferrer">
+          <Image src={tiktokIcon} alt={t.socials.tiktok} data-i18n-alt="socials.tiktok" width={48} height={48} loading="lazy" quality={100} format="png" />
         </a>
-        <a class="social-link" aria-label="YouTube">
-          <Image src={youtubeIcon} alt="YouTube" width={48} height={48} loading="lazy" quality={100} format="png" />
+        <a class="social-link" aria-label={t.socials.youtube} data-i18n-aria="socials.youtube">
+          <Image src={youtubeIcon} alt={t.socials.youtube} data-i18n-alt="socials.youtube" width={48} height={48} loading="lazy" quality={100} format="png" />
         </a>
       </div>
-      <p class="footer-copy">&copy; 2026 Liam Valty - Excurse Software. All rights reserved.</p>
+      <p class="footer-copy" data-i18n="footer.copyright">{t.footer.copyright}</p>
     </div>
   </footer>
-  <a class="kofi-button" aria-label="Support us on Ko-fi">
+  <a class="kofi-button" aria-label={t.home.supportUsAria} data-i18n-aria="home.supportUsAria">
     <Image src={kofiIcon} alt="Ko-fi" width={24} height={24} loading="lazy" quality={90} />
-    <span>Support Us</span>
+    <span data-i18n="home.supportUs">{t.home.supportUs}</span>
   </a>
 </BaseLayout>
 

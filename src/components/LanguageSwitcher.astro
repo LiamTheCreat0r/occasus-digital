@@ -1,0 +1,230 @@
+---
+import { Image } from 'astro:assets';
+import { translations, locales, defaultLocale } from '../i18n/ui';
+import flagUk from '../assets/images/flags/flag-uk.svg';
+import flagFrance from '../assets/images/flags/flag-france.svg';
+import flagSpain from '../assets/images/flags/flag-spain.svg';
+
+const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain };
+---
+
+<div class="lang-switcher" id="lang-switcher"
+  data-flag-en={flags.en.src}
+  data-flag-fr={flags.fr.src}
+  data-flag-es={flags.es.src}
+>
+  <button type="button" class="lang-current" aria-label="Change language" aria-expanded="false" aria-controls="lang-dropdown">
+    <Image src={flags[defaultLocale]} alt={defaultLocale.toUpperCase()} width={24} height={16} />
+    <span>{defaultLocale.toUpperCase()}</span>
+    <svg class="lang-chevron" viewBox="0 0 12 8" width="12" height="8" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+  </button>
+  <div class="lang-dropdown" id="lang-dropdown" role="menu">
+    {locales.map(locale => (
+      <button type="button" class="lang-option" role="menuitem" data-lang={locale}>
+        <Image src={flags[locale]} alt={locale.toUpperCase()} width={24} height={16} />
+        <span>{locale.toUpperCase()}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+<script define:vars={{ translations: JSON.stringify(translations), defaultLocale, locales }}>
+  const STORAGE_KEY = 'excurse-lang';
+  const t = JSON.parse(translations);
+
+  const switcher = document.getElementById('lang-switcher');
+  const flagUrls = {
+    en: switcher.dataset.flagEn,
+    fr: switcher.dataset.flagFr,
+    es: switcher.dataset.flagEs,
+  };
+
+  function getSavedLang() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && locales.includes(saved)) return saved;
+    } catch {}
+    return defaultLocale;
+  }
+
+  function applyLang(lang) {
+    const dict = t[lang] || t[defaultLocale];
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (key && dict[key]) {
+        if (el.tagName === 'IMG' || el.tagName === 'image') {
+          el.setAttribute('alt', dict[key]);
+        } else {
+          el.innerHTML = dict[key].replace(/\n/g, '<br>');
+        }
+      }
+    });
+
+    const gameDescSection = document.querySelector('[data-game-desc]');
+    if (gameDescSection) {
+      const slug = gameDescSection.getAttribute('data-game-desc');
+      const descKey = `game.${slug}.desc`;
+      if (dict[descKey]) {
+        const paragraphs = dict[descKey].split(/\n+/).filter(p => p.trim());
+        gameDescSection.querySelectorAll('p').forEach((p, i) => {
+          if (paragraphs[i]) {
+            p.innerHTML = paragraphs[i].trim();
+          }
+        });
+      }
+    }
+
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const key = el.getAttribute('data-i18n-aria');
+      if (key && dict[key]) el.setAttribute('aria-label', dict[key]);
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+      const key = el.getAttribute('data-i18n-alt');
+      if (key && dict[key]) el.setAttribute('alt', dict[key]);
+    });
+
+    const currentBtn = document.querySelector('#lang-switcher .lang-current');
+    if (currentBtn) {
+      const flagImg = currentBtn.querySelector('img');
+      const span = currentBtn.querySelector('span');
+      if (flagImg) {
+        flagImg.src = flagUrls[lang] || flagUrls[defaultLocale];
+        flagImg.alt = lang.toUpperCase();
+      }
+      if (span) span.textContent = lang.toUpperCase();
+    }
+
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch {}
+  }
+
+  const button = switcher.querySelector('.lang-current');
+
+  button.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const isOpen = switcher.classList.contains('open');
+    switcher.classList.toggle('open');
+    button.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  switcher.querySelectorAll('.lang-option').forEach(function(opt) {
+    opt.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const lang = opt.getAttribute('data-lang');
+      if (lang) {
+        applyLang(lang);
+        switcher.classList.remove('open');
+        button.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!switcher.contains(e.target)) {
+      switcher.classList.remove('open');
+      button.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  const savedLang = getSavedLang();
+  if (savedLang !== defaultLocale) applyLang(savedLang);
+</script>
+
+<style is:global>
+  .lang-switcher {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    pointer-events: auto;
+  }
+
+  .lang-current {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.4rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: #e8e8e8;
+    border: 1px solid #a94141;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    pointer-events: auto;
+  }
+
+  .lang-current:hover {
+    transform: translateY(-2px);
+    background: rgba(169, 65, 65, 0.8);
+  }
+
+  .lang-current img {
+    height: 16px !important;
+    width: auto !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    pointer-events: none;
+  }
+
+  .lang-chevron {
+    width: 12px;
+    height: 8px;
+    transition: transform 0.2s;
+    pointer-events: none;
+  }
+
+  .lang-switcher.open .lang-chevron {
+    transform: rotate(180deg);
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    right: 0;
+    display: none;
+    flex-direction: column;
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid #a94141;
+    border-radius: 12px;
+    overflow: hidden;
+    min-width: 100%;
+  }
+
+  .lang-switcher.open .lang-dropdown {
+    display: flex;
+  }
+
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    color: #e8e8e8;
+    background: none;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+    width: 100%;
+    text-align: left;
+    pointer-events: auto;
+  }
+
+  .lang-option:hover {
+    background: rgba(169, 65, 65, 0.5);
+  }
+
+  .lang-option img {
+    height: 16px !important;
+    width: auto !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    pointer-events: none;
+  }
+</style>
