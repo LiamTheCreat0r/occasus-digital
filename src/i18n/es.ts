@@ -55,5 +55,6 @@ export const t: Translation = {
     en: 'EN',
     fr: 'FR',
     es: 'ES',
+    de: 'DE',
   },
 };

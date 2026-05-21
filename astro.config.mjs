@@ -7,7 +7,7 @@ export default defineConfig({
   site: 'https://excurse-software.studio',
   integrations: [sitemap()],
   i18n: {
-    locales: ['en', 'fr', 'es'],
+    locales: ['en', 'fr', 'es', 'de'],
     defaultLocale: 'en',
   },
 });

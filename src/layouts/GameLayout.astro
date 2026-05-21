@@ -13,9 +13,11 @@ import type { ImageMetadata } from 'astro';
 import { t as en } from '../i18n/en';
 import { t as fr } from '../i18n/fr';
 import { t as es } from '../i18n/es';
+import { t as de } from '../i18n/de';
+import { translations as uiTranslations } from '../i18n/ui';
 
 const currentLocale = Astro.currentLocale ?? 'en';
-const translations = { en, fr, es };
+const translations = { en, fr, es, de };
 const t = translations[currentLocale as keyof typeof translations] ?? en;
 
 export interface Props {
@@ -29,11 +31,17 @@ const { title, game, cover, screenshots } = Astro.props;
 const base = '';
 const coverUrl = cover.src;
 
+const uiT = uiTranslations[currentLocale as keyof typeof uiTranslations] ?? uiTranslations.en;
+const gameDescKey = `game.${game.slug}.desc`;
+const gameTitleKey = `game.${game.slug}.title`;
+const displayDescription = (uiT as any)[gameDescKey] || game.description;
+const displayTitle = (uiT as any)[gameTitleKey] || game.title;
+
 function renderDescription(text: string): string {
   return text.replace(/\*\*(.+?)\*\*/g, '<span class="highlight">$1</span>');
 }
 
-const cleanDescription = game.description.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\n+/g, ' ').trim();
+const cleanDescription = displayDescription.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\n+/g, ' ').trim();
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -53,10 +61,10 @@ const jsonLd = {
     <Image src={cover} alt={game.title} class="game-hero-img" />
   </div>
   <div class="game-page">
-    <h1 class="game-page-title" data-i18n={`game.${game.slug}.title`}>{game.title}</h1>
+    <h1 class="game-page-title" data-i18n={gameTitleKey}>{displayTitle}</h1>
     <div class="game-page-content">
       <div class="game-description-section" data-game-desc={game.slug}>
-        {game.description.split(/\n+/).map((paragraph) => <p set:html={renderDescription(paragraph.trim())}></p>)}
+        {displayDescription.split(/\n+/).map((paragraph) => <p set:html={renderDescription(paragraph.trim())}></p>)}
     <div class="game-available">
       <p class="game-available-label" data-i18n="game.availableOn">{t.game.availableOn}</p>
       <div class="game-available-links">

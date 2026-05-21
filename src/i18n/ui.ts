@@ -58,11 +58,14 @@ It's packed with easter eggs, secret codes, sketches, design documents, and whim
     'team.shahine.name': 'Shahine',
     'team.shahine.tag0': 'Artist',
     'team.shahine.tag1': 'Game Designer',
+    'team.shahine.desc': 'Artist, but not only. Never content to work in a single field — his curiosity drives him to explore diverse disciplines. His will to push beyond limits is inexhaustible. Abstract, systemic; he is a sensitive and deeply original being.',
     'team.liam.name': 'Liam Valty',
     'team.liam.tag0': 'Developer',
     'team.liam.tag1': 'Game Designer',
+    'team.liam.desc': 'Creative and meticulous, he takes care of every detail; fascinated by technology, a skilled programmer. Above all, he remains a true artist. His first passion and only guide is creation, which he practices with fervor.',
     'team.kotico.name': 'Kotico',
     'team.kotico.tag0': 'Artist',
+    'team.kotico.desc': 'Illustrator with multiple talents and facets, a complete universe with varied characters is always alive within him. Creating is not an option for him: he will never stop. Also recognized for his humor and cheerfulness that make him irresistible!',
     'socials.twitter': 'Twitter',
     'socials.instagram': 'Instagram',
     'socials.tiktok': 'TikTok',
@@ -135,11 +138,14 @@ Il regorge d'easter eggs, de codes secrets, de croquis, de documents de concepti
     'team.shahine.name': 'Shahine',
     'team.shahine.tag0': 'Artiste',
     'team.shahine.tag1': 'Game Designer',
+    'team.shahine.desc': 'Artiste, mais pas que. Ne se contente jamais de travailler dans un domaine unique — sa curiosité l\'encourage à explorer divers domaines. Sa volonté de se dépasser est inépuisable. Abstrait, systémique ; il est un être sensible et profondément original.',
     'team.liam.name': 'Liam Valty',
     'team.liam.tag0': 'Développeur',
     'team.liam.tag1': 'Game Designer',
+    'team.liam.desc': 'Créatif et rigoureux, il prend soin des détails ; fasciné par la technologie, bon programmeur. Il reste avant tout un véritable artiste. Sa passion première et son seul guide est la création qu\'il pratique avec ardeur.',
     'team.kotico.name': 'Kotico',
     'team.kotico.tag0': 'Artiste',
+    'team.kotico.desc': 'Illustrateur aux multiples talents et facètes, un univers complet avec des personnages variés est toujours éveillé en lui. Créer n\'est pas une option pour lui : il ne s\'arrêtera jamais. Également reconnu pour son humour et sa gaieté qui font de lui quelqu\'un d\'irrésistible !',
     'socials.twitter': 'Twitter',
     'socials.instagram': 'Instagram',
     'socials.tiktok': 'TikTok',
@@ -212,11 +218,14 @@ Un proyecto colaborativo masivo organizado por Kotico y completamente programado
     'team.shahine.name': 'Shahine',
     'team.shahine.tag0': 'Artista',
     'team.shahine.tag1': 'Game Designer',
+    'team.shahine.desc': 'Artista, pero no solo. Nunca se conforma con trabajar en un único campo — su curiosidad lo impulsa a explorar diversas disciplinas. Su voluntad de superarse es inagotable. Abstracto, sistémico; es un ser sensible y profundamente original.',
     'team.liam.name': 'Liam Valty',
     'team.liam.tag0': 'Desarrollador',
     'team.liam.tag1': 'Game Designer',
+    'team.liam.desc': 'Creativo y meticuloso, cuida cada detalle; fascinado por la tecnología, buen programador. Ante todo, sigue siendo un verdadero artista. Su primera pasión y su única guía es la creación, que practica con fervor.',
     'team.kotico.name': 'Kotico',
     'team.kotico.tag0': 'Artista',
+    'team.kotico.desc': 'Ilustrador con múltiples talentos y facetas, un universo completo con personajes variados siempre vive en su interior. Crear no es una opción para él: nunca se detendrá. También reconocido por su humor y alegría que lo hacen irresistible.',
     'socials.twitter': 'Twitter',
     'socials.instagram': 'Instagram',
     'socials.tiktok': 'TikTok',
@@ -228,10 +237,92 @@ Un proyecto colaborativo masivo organizado por Kotico y completamente programado
     'lang.en': 'EN',
     'lang.fr': 'FR',
     'lang.es': 'ES',
+    'lang.de': 'DE',
     'lang.changeLanguage': 'Cambiar idioma',
+  },
+  de: {
+    'nav.theStudio': 'Das Studio',
+    'nav.ourGames': 'Unsere Spiele',
+    'nav.theTeam': 'Das Team',
+    'nav.blog': 'Blog',
+    'nav.toggleMenu': 'Menü umschalten',
+    'home.title': 'Excurse Software',
+    'home.description': 'Ein Videospielstudio, das einzigartige, imaginative Erlebnisse schafft. Schöpfer von Endhell, Parabellum Rain, Babel Adventure und Spectra Collab.',
+    'home.tagline': 'Ein Team leidenschaftlicher Künstler, nichts weiter, nichts weniger.',
+    'home.ourGames': 'Unsere Spiele',
+    'home.theTeam': 'Das Team',
+    'home.blog': 'Blog',
+    'home.knowMore': 'Mehr erfahren',
+    'home.supportUs': 'Unterstütze uns',
+    'home.supportUsAria': 'Unterstütze uns auf Ko-fi',
+    'footer.copyright': '© 2026 Liam Valty - Excurse Software. Alle Rechte vorbehalten.',
+    'game.availableOn': 'Verfügbar auf',
+    'game.screenshot': 'Screenshot',
+    'gameInfo.endhell.title': 'Endhell',
+    'gameInfo.endhell.desc': 'FPS und Endless Runner!',
+    'gameInfo.spectra-collab.title': 'Spectra Collab',
+    'gameInfo.spectra-collab.desc': 'Ein kollaborativer interaktiver virtueller Raum!',
+    'gameInfo.parabellum.title': 'Parabellum Rain',
+    'gameInfo.parabellum.desc': 'Ein einzigartiges Platformer/RPG, bei dem Regen dein Verbündeter ist...',
+    'gameInfo.babel.title': 'Babel Adventure',
+    'gameInfo.babel.desc': 'Ein Platformer, bei dem Springen verboten ist! Du musst die Leiter hochklettern!',
+    'game.endhell.title': 'Endhell',
+    'game.endhell.desc': `Ein Handyspiel, auch am PC spielbar.
+
+ENDHELL spielt in einem höllischen Universum (wer hätte das gedacht?) — es ist eine Mischung aus FPS und Endless Runner!
+
+Freischaltbare Waffen, Skins, Gebiete und vieles mehr!
+
+Du kannst es KOSTENLOS spielen`,
+    'game.parabellum.title': 'Parabellum Rain',
+    'game.parabellum.desc': `In Parabellum Rain bist du Izmael: ein depressiver Büroangestellter, der vom Leben ausgelaugt ist und dessen einziger Freund sein eigener sarkastischer und gieriger Regenschirm ist.
+
+In diesem 2D-Platformer-Action-RPG nutzt du die Wassertropfen, um dich voranzutreiben, anzugreifen und deine Gegner zu vernichten!
+
+Jeden Tag, wenn du zur Arbeit gehst, wird die Stadt durch ebenso bizarre wie unerwartete Ereignisse verändert — mutierte Tiere, blutrünstige Politiker, kosmische Kreaturen...
+
+Entdecke eine Stadt mit verdrehten und nihilistischen Bewohnern und finde die Quelle des Bösen.
+
+Kostenlos verfügbar auf Newgrounds und itch.io`,
+    'game.babel.title': 'Babel Adventure',
+    'game.babel.desc': `Unser allererstes PC-Spiel!
+
+Es ist ein Platformer und Semi-Roguelike, bei dem du nicht springen oder angreifen kannst! Viel Glück beim Klettern des gesamten Turms ohne runterzufallen — glaub mir, das ist ÜBERHAUPT nicht leicht.
+
+Und außerdem ist es KOSTENLOS`,
+    'game.spectra-collab.title': 'Spectra Collab',
+    'game.spectra-collab.desc': `Spectra Collab ist ein interaktiver virtueller Raum mit Hunderten von imaginären Spielboxen!
+
+Ein massives Gemeinschaftsprojekt, organisiert von Kotico und vollständig programmiert von Liam Valty, das rund hundert professionelle Illustratoren und Musiker zusammenbringt.
+
+Es ist voller Easter Eggs, geheimer Codes, Skizzen, Design-Dokumente und wunderlicher Beschreibungen, die die Fantasie jedes Einzelnen anregen!`,
+    'team.shahine.name': 'Shahine',
+    'team.shahine.tag0': 'Künstler',
+    'team.shahine.tag1': 'Game Designer',
+    'team.shahine.desc': 'Künstler, aber nicht nur. Gibt sich nie damit zufrieden, in einem einzigen Bereich zu arbeiten — seine Neugier treibt ihn dazu, verschiedene Disziplinen zu erkunden. Sein Wille, sich zu übertreffen, ist unerschöpflich. Abstrakt, systemisch; er ist ein sensibles und zutiefst originales Wesen.',
+    'team.liam.name': 'Liam Valty',
+    'team.liam.tag0': 'Entwickler',
+    'team.liam.tag1': 'Game Designer',
+    'team.liam.desc': 'Kreativ und gewissenhaft, er kümmert sich um jedes Detail; fasziniert von Technologie, guter Programmierer. Vor allem bleibt er ein wahrer Künstler. Seine erste Leidenschaft und sein einziger Leitfaden ist die Schöpfung, die er mit Inbrunst praktiziert.',
+    'team.kotico.name': 'Kotico',
+    'team.kotico.tag0': 'Künstler',
+    'team.kotico.desc': 'Illustrator mit vielfältigen Talenten und Facetten, ein vollständiges Universum mit unterschiedlichen Charakteren lebt stets in ihm. Erschaffen ist für ihn keine Option: er wird niemals aufhören. Auch bekannt für seinen Humor und seine Fröhlichkeit, die ihn unwiderstehlich machen!',
+    'socials.twitter': 'Twitter',
+    'socials.instagram': 'Instagram',
+    'socials.tiktok': 'TikTok',
+    'socials.youtube': 'YouTube',
+    'about.title': 'Über uns',
+    'about.description': 'Erfahre mehr über Excurse Software — ein Team leidenschaftlicher Künstler, die einzigartige Videospielerlebnisse schaffen.',
+    'blogIndex.title': 'Blog',
+    'blogIndex.description': 'Neuigkeiten, Updates und Behind-the-Scenes-Inhalte von Excurse Software.',
+    'lang.en': 'EN',
+    'lang.fr': 'FR',
+    'lang.es': 'ES',
+    'lang.de': 'DE',
+    'lang.changeLanguage': 'Sprache ändern',
   },
 } as const;
 
 export type Locale = keyof typeof translations;
-export const locales: Locale[] = ['en', 'fr', 'es'];
+export const locales: Locale[] = ['en', 'fr', 'es', 'de'];
 export const defaultLocale: Locale = 'en';

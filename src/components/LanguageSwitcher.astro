@@ -4,14 +4,16 @@ import { translations, locales, defaultLocale } from '../i18n/ui';
 import flagUk from '../assets/images/flags/flag-uk.svg';
 import flagFrance from '../assets/images/flags/flag-france.svg';
 import flagSpain from '../assets/images/flags/flag-spain.svg';
+import flagGermany from '../assets/images/flags/flag-germany.svg';
 
-const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain };
+const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, de: flagGermany };
 ---
 
 <div class="lang-switcher" id="lang-switcher"
   data-flag-en={flags.en.src}
   data-flag-fr={flags.fr.src}
   data-flag-es={flags.es.src}
+  data-flag-de={flags.de.src}
 >
   <button type="button" class="lang-current" aria-label="Change language" aria-expanded="false" aria-controls="lang-dropdown">
     <Image src={flags[defaultLocale]} alt={defaultLocale.toUpperCase()} width={24} height={16} />
@@ -37,6 +39,7 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain }
     en: switcher.dataset.flagEn,
     fr: switcher.dataset.flagFr,
     es: switcher.dataset.flagEs,
+    de: switcher.dataset.flagDe,
   };
 
   function getSavedLang() {
@@ -146,20 +149,24 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain }
     justify-content: center;
     gap: 0.5rem;
     padding: 0.8rem 1.4rem;
-    background: rgba(0, 0, 0, 0.7);
+    background: #a94141;
     color: #e8e8e8;
     border: 1px solid #a94141;
     border-radius: 24px;
     font-size: 0.85rem;
     font-weight: 600;
+    font-family: 'Inter', system-ui, sans-serif;
     cursor: pointer;
     transition: transform 0.2s, background 0.2s;
     pointer-events: auto;
+    box-shadow: none;
+    appearance: none;
+    outline: none;
   }
 
   .lang-current:hover {
-    transform: translateY(-2px);
-    background: rgba(169, 65, 65, 0.8);
+    transform: translateY(-8px);
+    background: #a94141;
   }
 
   .lang-current img {

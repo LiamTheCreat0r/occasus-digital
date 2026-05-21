@@ -148,6 +148,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
               <span class="tag" data-i18n="team.shahine.tag0">{t.team.shahine.tags[0]}</span>
               <span class="tag" data-i18n="team.shahine.tag1">{t.team.shahine.tags[1]}</span>
             </div>
+            <p class="member-desc" data-i18n="team.shahine.desc">{t.team.shahine.desc}</p>
           </div>
         </div>
         <div class="team-member">
@@ -160,6 +161,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
               <span class="tag" data-i18n="team.liam.tag0">{t.team.liam.tags[0]}</span>
               <span class="tag" data-i18n="team.liam.tag1">{t.team.liam.tags[1]}</span>
             </div>
+            <p class="member-desc" data-i18n="team.liam.desc">{t.team.liam.desc}</p>
           </div>
         </div>
         <div class="team-member">
@@ -171,6 +173,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
             <div class="member-tags">
               <span class="tag" data-i18n="team.kotico.tag0">{t.team.kotico.tags[0]}</span>
             </div>
+            <p class="member-desc" data-i18n="team.kotico.desc">{t.team.kotico.desc}</p>
           </div>
         </div>
       </div>
@@ -644,7 +647,10 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    column-gap: 3rem;
+    row-gap: 0;
+    flex-wrap: wrap;
+    padding-top: 4rem;
   }
 
   .team-bottom {
@@ -657,6 +663,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     align-items: center;
     gap: 0.75rem;
     transition: transform 0.3s;
+    margin: 2rem 2rem 0;
   }
 
   .team-member-column {
@@ -712,6 +719,14 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     color: #a94141;
     border: 1px solid #a94141;
     border-radius: 4px;
+  }
+
+  .member-desc {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #888;
+    max-width: 320px;
   }
 
   .blog {

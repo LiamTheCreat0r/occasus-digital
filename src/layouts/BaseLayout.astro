@@ -68,6 +68,13 @@ const lang = currentLocale === 'fr' ? 'fr' : 'en';
         btn.style.transition = 'transform 0.2s, background 0.2s';
         btn.style.boxShadow = 'none';
       }
+
+      if (!document.getElementById('kofi-hover-style')) {
+        var style = document.createElement('style');
+        style.id = 'kofi-hover-style';
+        style.textContent = '[class*="kofi"] button:hover, .kofi-floating-btn:hover, [id*="kofi"] button:hover { transform: translateY(-8px) !important; }';
+        document.head.appendChild(style);
+      }
     }
 
     var observer = new MutationObserver(styleKofiButton);
