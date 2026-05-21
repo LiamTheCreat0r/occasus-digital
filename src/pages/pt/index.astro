@@ -25,11 +25,12 @@ import { t as en } from '../../i18n/en';
 import { t as fr } from '../../i18n/fr';
 import { t as es } from '../../i18n/es';
 import { t as de } from '../../i18n/de';
+import { t as pt } from '../../i18n/pt';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 const currentLocale = Astro.currentLocale ?? 'en';
-const translations = { en, fr, es, de };
+const translations = { en, fr, es, de, pt };
 const t = translations[currentLocale as keyof typeof translations] ?? en;
 const homeUrl = getRelativeLocaleUrl(currentLocale);
 ---
@@ -1110,7 +1111,13 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
   }
 </style>
 
-<script define:vars={{ gameInfo: t.gameInfo }}>
+<script define:vars={{ 
+  gameInfoEn: en.gameInfo,
+  gameInfoFr: fr.gameInfo,
+  gameInfoEs: es.gameInfo,
+  gameInfoDe: de.gameInfo,
+  gameInfoPt: pt.gameInfo
+}}>
   const menuBar = document.getElementById('menu-bar');
   const studio = document.getElementById('studio');
 
@@ -1154,6 +1161,17 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
   let selectedCover = null;
   let activeLayer = 1;
 
+  const allGameInfo = { en: gameInfoEn, fr: gameInfoFr, es: gameInfoEs, de: gameInfoDe, pt: gameInfoPt };
+
+  function getCurrentLang() {
+    try { return localStorage.getItem('excurse-lang') || 'en'; } catch { return 'en'; }
+  }
+
+  function getInfo(key) {
+    const lang = getCurrentLang();
+    return (allGameInfo[lang] || gameInfoEn)[key];
+  }
+
   if (cartridges.length > 0) {
     const firstCartridge = cartridges[0];
     selectedCover = firstCartridge.dataset.cover;
@@ -1163,15 +1181,20 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
   }
 
   function updateGameInfo(key) {
-    if (gameInfo[key]) {
-      gameTitleEl.textContent = gameInfo[key].title;
-      gameDescEl.textContent = gameInfo[key].desc;
+    const info = getInfo(key);
+    if (info) {
+      gameTitleEl.textContent = info.title;
+      gameDescEl.textContent = info.desc;
       const gameBtn = document.getElementById('game-btn');
       if (gameBtn) gameBtn.href = `/games/${key}`;
       const gameInfoContainer = document.querySelector('.game-info');
       if (gameInfoContainer) gameInfoContainer.classList.add('visible');
     }
   }
+
+  window.__updateGameInfo = function() {
+    if (selectedCover) updateGameInfo(selectedCover);
+  };
 
   function setCover(coverUrl) {
     if (activeLayer === 1) {

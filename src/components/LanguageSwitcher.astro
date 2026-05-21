@@ -103,6 +103,7 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
     }
 
     try { localStorage.setItem(STORAGE_KEY, lang); } catch {}
+    if (window.__updateGameInfo) window.__updateGameInfo();
   }
 
   const button = switcher.querySelector('.lang-current');
