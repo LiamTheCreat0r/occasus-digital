@@ -53,6 +53,10 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
     return defaultLocale;
   }
 
+  function renderHighlight(text) {
+    return text.replace(/\*\*(.+?)\*\*/g, '<span class="highlight">$1</span>');
+  }
+
   function applyLang(lang) {
     const dict = t[lang] || t[defaultLocale];
 
@@ -62,7 +66,7 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
         if (el.tagName === 'IMG' || el.tagName === 'image') {
           el.setAttribute('alt', dict[key]);
         } else {
-          el.innerHTML = dict[key].replace(/\n/g, '<br>');
+          el.innerHTML = renderHighlight(dict[key]).replace(/\n/g, '<br>');
         }
       }
     });
@@ -75,7 +79,7 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
         const paragraphs = dict[descKey].split(/\n+/).filter(p => p.trim());
         gameDescSection.querySelectorAll('p').forEach((p, i) => {
           if (paragraphs[i]) {
-            p.innerHTML = paragraphs[i].trim();
+            p.innerHTML = renderHighlight(paragraphs[i].trim());
           }
         });
       }
