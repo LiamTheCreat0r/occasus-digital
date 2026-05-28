@@ -1,7 +1,7 @@
 ---
 title: "ENDHELL Demo Launch"
 description: "ENDHELL mobile demo is out on Itch and Newgrounds!"
-pubDate: 2026-05-22
+pubDate: 2026-05-29
 heroImage: "/images/blog-thumbnails/endhell.png"
 tags: ["Launch", "ENDHELL"]
 ---
@@ -19,9 +19,10 @@ I wondered how I could make a playable FPS on Scratch.
 
 So I designed a system that wouldn't require a 3D engine, imagining a long corridor where the player could only see enemies from the front, thus allowing the implementation of simple 2D sprites instead of 3D models.
 Wanting a retro feel and using a postmodern artistic approach, I combined several influences; first, the obvious ones: DOOM, Wolfenstein 3D, but also more niche games like ProgressBar96 or Don't Look Back.
+
 At that point, I was hesitating between making the game an endless runner or allowing the player to move backward: you know what I chose. As for the atmosphere, I wanted something quite satirical, with an undercurrent of social commentary, in a Paul Verhoeven-esque style, but even more exaggerated and absurd.
-The player was supposed to face terrorists infected by fungi, zombie capitalist CEOs, and finally, in a final battle:
-ADOLF HITLER 4.0 (yes, really) who summons the Moon, turning it into a weapon of mass destruction.
+The player was supposed to face terrorists infected by fungi, zombie capitalist CEOs
+
 Ultimately, none of this—because it was too ambitious—was included in the NEWGROUNDS version developed two years later. Prioritizing a simple, narrative-free arcade game that needed to be developed quickly, I envisioned a simple universe in which the player was an Angel tasked with purging an endless corridor representing Hell of sins and demons (just to maintain some of the social commentary).
 Finally, the new version, released today, revisits this new universe, incorporating ideas from the original concept. The lore plays a much more prominent role, as do the humor and satire; all this, not to mention the gameplay improvements, added weapons, finally polished visuals, and a truly impressive level of technical polish.
 
