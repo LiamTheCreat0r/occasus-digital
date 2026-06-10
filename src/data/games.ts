@@ -18,9 +18,9 @@ export const games: Game[] = [
 Unlockable **weapons**, **skins**, **areas** and so much more!
 
 You can play it for **FREE**`,
-        videos: [],
+        videos: ["endhell.webm"],
         itchUrl: "https://excurse-software.itch.io/",
-        newgroundsUrl: "https://www.newgrounds.com/",
+        newgroundsUrl: "https://www.newgrounds.com/portal/view/1036184",
     },
     {
         slug: "parabellum",
