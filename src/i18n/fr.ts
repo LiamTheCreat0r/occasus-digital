@@ -4,7 +4,6 @@ export const t: Translation = {
   nav: {
     theStudio: 'Le Studio',
     ourGames: 'Nos Jeux',
-    theTeam: 'L\'Équipe',
     blog: 'Blog',
     toggleMenu: 'Basculer le menu',
   },
@@ -13,7 +12,6 @@ export const t: Translation = {
     description: 'Un studio de jeux vidéo créant des expériences uniques et imaginatives. Créateurs de Endhell, Parabellum Rain, Babel Adventure et Spectra Collab.',
     tagline: 'Une équipe d\'artistes passionnés, rien de plus, rien de moins.',
     ourGames: 'Nos Jeux',
-    theTeam: 'L\'Équipe',
     blog: 'Blog',
     knowMore: 'En Savoir Plus',
     supportUs: 'Nous Soutenir',
@@ -31,11 +29,6 @@ export const t: Translation = {
     'spectra-collab': { title: 'Spectra Collab', desc: 'Un espace virtuel interactif et collaboratif !' },
     parabellum: { title: 'Parabellum Rain', desc: 'Un platformer/RPG unique où la pluie est votre alliée...' },
     babel: { title: 'Babel Adventure', desc: 'Un jeu de plateforme où sauter est interdit ! Il faudra monter à l\'échelle !' },
-  },
-  team: {
-    shahine: { name: 'Shahine', tags: ['Artiste', 'Game Designer'] },
-    liam: { name: 'Liam Valty', tags: ['Développeur', 'Game Designer'] },
-    kotico: { name: 'Kotico', tags: ['Artiste'] },
   },
   socials: {
     twitter: 'Twitter',

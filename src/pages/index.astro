@@ -18,9 +18,6 @@ import instagramIcon from '../assets/images/socials/Instagram_logo.png';
 import tiktokIcon from '../assets/images/socials/Tiktok_icon.png';
 import twitterIcon from '../assets/images/socials/Twitter_icon.png';
 import youtubeIcon from '../assets/images/socials/Youtube_icon.png';
-import koticoPortrait from '../assets/images/portraits/kotico.png';
-import liamPortrait from '../assets/images/portraits/liam-valty.png';
-import shahinePortrait from '../assets/images/portraits/shahine-rachidi.png';
 import { t as en } from '../i18n/en';
 import { t as fr } from '../i18n/fr';
 import { t as es } from '../i18n/es';
@@ -132,52 +129,6 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
       <div class="cartridge-wrap" data-cover="babel">
         <Image src={babelCartridge} alt="Babel Adventure" class="cartridge-img" width={799} loading="lazy" />
         <p class="device-label">Babel Adventure</p>
-      </div>
-    </div>
-  </section>
-
-<section id="team" class="section team">
-    <div class="team-section-bg">
-      <h2 data-i18n="home.theTeam">{t.home.theTeam}</h2>
-      <div class="team-grid">
-        <div class="team-member">
-          <a href="https://pumpkinshosho.newgrounds.com/" target="_blank" rel="noopener noreferrer">
-            <Image src={shahinePortrait} alt={t.team.shahine.name} class="member-portrait" width={850} loading="eager" />
-          </a>
-          <div class="member-info member-info-center">
-            <h3 data-i18n="team.shahine.name">{t.team.shahine.name}</h3>
-            <div class="member-tags">
-              <span class="tag" data-i18n="team.shahine.tag0">{t.team.shahine.tags[0]}</span>
-              <span class="tag" data-i18n="team.shahine.tag1">{t.team.shahine.tags[1]}</span>
-            </div>
-            <p class="member-desc" data-i18n="team.shahine.desc">{t.team.shahine.desc}</p>
-          </div>
-        </div>
-        <div class="team-member">
-          <a href="https://github.com/LiamTheCreat0r" target="_blank" rel="noopener noreferrer">
-            <Image src={liamPortrait} alt={t.team.liam.name} class="member-portrait" width={850} loading="eager" />
-          </a>
-          <div class="member-info member-info-center">
-            <h3 data-i18n="team.liam.name">{t.team.liam.name}</h3>
-            <div class="member-tags">
-              <span class="tag" data-i18n="team.liam.tag0">{t.team.liam.tags[0]}</span>
-              <span class="tag" data-i18n="team.liam.tag1">{t.team.liam.tags[1]}</span>
-            </div>
-            <p class="member-desc" data-i18n="team.liam.desc">{t.team.liam.desc}</p>
-          </div>
-        </div>
-        <div class="team-member">
-          <a href="https://www.instagram.com/kotico.png/" target="_blank" rel="noopener noreferrer">
-            <Image src={koticoPortrait} alt={t.team.kotico.name} class="member-portrait" width={850} loading="eager" />
-          </a>
-          <div class="member-info member-info-center">
-            <h3 data-i18n="team.kotico.name">{t.team.kotico.name}</h3>
-            <div class="member-tags">
-              <span class="tag" data-i18n="team.kotico.tag0">{t.team.kotico.tags[0]}</span>
-            </div>
-            <p class="member-desc" data-i18n="team.kotico.desc">{t.team.kotico.desc}</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -605,132 +556,6 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     color: #fff;
   }
 
-  .team {
-    background: #0a0a0a;
-    flex-direction: column;
-    gap: 3rem;
-  }
-
-  .team-section-bg {
-    background-color: transparent;
-  }
-
-  .team h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #a94141;
-    text-align: center;
-  }
-
-  .team h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #a94141;
-  }
-
-  .team .tag {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    margin-top: 1rem;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #a94141;
-    border: 1px solid #a94141;
-    border-radius: 4px;
-  }
-
-  .team-grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 3rem;
-    row-gap: 0;
-    flex-wrap: wrap;
-    padding-top: 4rem;
-  }
-
-  .team-bottom {
-    margin-top: -2rem;
-  }
-
-  .team-member {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    transition: transform 0.3s;
-    margin: 2rem 2rem 0;
-  }
-
-  .team-member-column {
-    flex-direction: column;
-  }
-
-  .team-member:hover {
-    transform: scale(1.08);
-  }
-
-  .member-portrait {
-    border-radius: 8px;
-    flex-shrink: 0;
-    object-fit: cover;
-    width: 350px;
-    height: auto;
-  }
-
-  .member-info {
-    text-align: left;
-  }
-
-  .member-info-right {
-    text-align: right;
-  }
-
-  .member-info-center {
-    text-align: center;
-  }
-
-  .member-info h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #a94141;
-  }
-
-  .member-tags {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #a94141;
-    border: 1px solid #a94141;
-    border-radius: 4px;
-  }
-
-  .member-desc {
-    margin-top: 1rem;
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: #888;
-    max-width: 320px;
-  }
-
   .blog {
     background: transparent;
     flex-direction: column;
@@ -1067,36 +892,6 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
       font-size: 2rem;
     }
 
-    .team {
-      background: #0a0a0a;
-    }
-
-    .team-section-bg {
-      padding: 2rem;
-    }
-
-    .team-grid {
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .team-bottom {
-      margin-top: 0;
-    }
-
-    .team-member {
-      flex-direction: column;
-    }
-
-    .member-portrait {
-      width: 100%;
-      max-width: 350px;
-      height: auto;
-    }
-
-    .member-info-right {
-      text-align: center;
-    }
   }
 
   @media (max-width: 480px) {
