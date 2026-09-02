@@ -11,7 +11,7 @@ export interface Props {
   jsonLd?: object;
 }
 
-const { title, description = 'Excurse Software — A video game studio crafting unique, imaginative experiences.', image, type, url, jsonLd } = Astro.props;
+const { title, description = 'Occasus Digital — A video game studio crafting unique, imaginative experiences.', image, type, url, jsonLd } = Astro.props;
 
 const currentLocale = Astro.currentLocale ?? 'en';
 const lang = currentLocale === 'fr' ? 'fr' : 'en';
@@ -22,10 +22,10 @@ const lang = currentLocale === 'fr' ? 'fr' : 'en';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} — Excurse Software</title>
+    <title>{title} — Occasus Digital</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="author" content="Excurse Software" />
-    <meta name="keywords" content="indie games, video game studio, game development, Excurse Software" />
+    <meta name="author" content="Occasus Digital" />
+    <meta name="keywords" content="indie games, video game studio, game development, Occasus Digital" />
     <Seo
       title={title}
       description={description}

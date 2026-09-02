@@ -1,6 +1,6 @@
-# Excurse Software — Website
+# Occasus Digital — Website
 
-> Official site for **Excurse Software**, an indie video game studio.
+> Official site for **Occasus Digital**, an indie video game studio.
 
 ## Tech Stack
 

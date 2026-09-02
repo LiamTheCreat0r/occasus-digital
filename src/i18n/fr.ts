@@ -8,7 +8,7 @@ export const t: Translation = {
     toggleMenu: 'Basculer le menu',
   },
   home: {
-    title: 'Excurse Software',
+    title: 'Occasus Digital',
     description: 'Un studio de jeux vidéo créant des expériences uniques et imaginatives. Créateurs de Endhell, Parabellum Rain, Babel Adventure et Spectra Collab.',
     tagline: 'Une équipe d\'artistes passionnés, rien de plus, rien de moins.',
     ourGames: 'Nos Jeux',
@@ -18,7 +18,7 @@ export const t: Translation = {
     supportUsAria: 'Soutenez-nous sur Ko-fi',
   },
   footer: {
-    copyright: '© 2026 Liam Valty - Excurse Software. Tous droits réservés.',
+    copyright: '© 2026 Liam Valty - Occasus Digital. Tous droits réservés.',
   },
   game: {
     availableOn: 'Disponible sur',
@@ -38,11 +38,11 @@ export const t: Translation = {
   },
   about: {
     title: 'À Propos',
-    description: 'Découvrez Excurse Software — une équipe d\'artistes passionnés créant des expériences de jeu vidéo uniques.',
+    description: 'Découvrez Occasus Digital — une équipe d\'artistes passionnés créant des expériences de jeu vidéo uniques.',
   },
   blogIndex: {
     title: 'Blog',
-    description: 'Actualités, mises à jour et contenus exclusifs d\'Excurse Software.',
+    description: 'Actualités, mises à jour et contenus exclusifs d\'Occasus Digital.',
   },
   langSwitcher: {
     en: 'EN',

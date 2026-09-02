@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://excurse-software.studio/sitemap-index.xml
+Sitemap: https://occasus-digital.com/sitemap-index.xml

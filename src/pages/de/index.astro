@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar.astro';
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import logo from '../../assets/images/logos/excurse-software-logo.png';
+import logo from '../../assets/images/logos/occasus-digital-no-background-no-text.png';
 import babelCartridge from '../../assets/images/cartridges/babel-adventure-cartridge.png';
 import parabellumCartridge from '../../assets/images/cartridges/parabellum-rain-cartridge.png';
 import endhellCartridge from '../../assets/images/cartridges/endhell-cartridge.png';
@@ -40,9 +40,9 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Excurse Software",
-    "url": "https://excurse-software.studio",
-    "logo": "https://excurse-software.studio/favicon.png",
+    "name": "Occasus Digital",
+    "url": "https://occasus-digital.com",
+    "logo": "https://occasus-digital.com/favicon.png",
     "sameAs": [
       "https://x.com/excursesoftware",
       "https://www.instagram.com/excurse_software/",
@@ -88,7 +88,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     <div class="studio-content">
       <div class="studio-logo-wrap">
         <div class="studio-logo">
-          <Image src={logo} alt="Excurse Software" class="studio-logo-img" width={499} loading="eager" />
+          <Image src={logo} alt="Occasus Digital" class="studio-logo-img" width={499} loading="eager" />
           <div class="studio-logo-bar"></div>
         </div>
         <div class="studio-text">
@@ -130,6 +130,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
         <Image src={babelCartridge} alt="Babel Adventure" class="cartridge-img" width={799} loading="lazy" />
         <p class="device-label">Babel Adventure</p>
       </div>
+    </div>
     </div>
   </section>
 

@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://excurse-software.studio',
+  site: 'https://occasus-digital.com',
   integrations: [sitemap()],
   i18n: {
     locales: ['en', 'fr', 'es', 'de', 'pt'],
