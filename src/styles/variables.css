@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'SuperBugly';
+  src: url('../assets/fonts/SuperBugly.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-text: #1a1a1a;
   --color-bg: #ffffff;
