@@ -40,49 +40,4 @@ const lang = currentLocale === 'fr' ? 'fr' : 'en';
     <slot />
     <LanguageSwitcher />
   </body>
-  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js' is:inline></script>
-  <style is:inline>
-    .floatingchat-container-wrap {
-      transition: transform 0.2s ease !important;
-    }
-    .floatingchat-container-wrap:hover {
-      transform: translateY(-8px) !important;
-    }
-  </style>
-  <script is:inline>
-    kofiWidgetOverlay.draw('excurse_software', {
-      'type': 'floating-chat',
-      'floating-chat.donateButton.text': 'Support me',
-      'floating-chat.donateButton.background-color': '#a94141',
-      'floating-chat.donateButton.text-color': '#e8e8e8'
-    });
-
-    function styleKofiButton() {
-      var btn = document.querySelector('[class*="kofi"] button, .kofi-floating-btn, [id*="kofi"] button, [class*="kofi"] a, [id*="kofi"] a');
-      if (!btn) {
-        var containers = document.querySelectorAll('[class*="kofi"], [id*="kofi"]');
-        containers.forEach(function(c) {
-          var b = c.querySelector('button, a');
-          if (b) btn = b;
-        });
-      }
-      if (btn && !btn.dataset.kofiStyled) {
-        btn.style.background = 'rgba(0,0,0,0.7)';
-        btn.style.border = '1px solid #a94141';
-        btn.style.borderRadius = '24px';
-        btn.style.color = '#e8e8e8';
-        btn.style.fontFamily = "'Inter', system-ui, sans-serif";
-        btn.style.fontWeight = '600';
-        btn.style.padding = '0.8rem 1.4rem';
-        btn.style.transition = 'transform 0.2s ease';
-        btn.style.boxShadow = 'none';
-        btn.dataset.kofiStyled = 'true';
-      }
-    }
-
-    var observer = new MutationObserver(styleKofiButton);
-    observer.observe(document.body, { childList: true, subtree: true });
-    setTimeout(styleKofiButton, 500);
-    setTimeout(styleKofiButton, 2000);
-  </script>
 </html>
