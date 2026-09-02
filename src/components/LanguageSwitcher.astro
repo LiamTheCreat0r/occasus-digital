@@ -17,18 +17,22 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
   data-flag-de={flags.de.src}
   data-flag-pt={flags.pt.src}
 >
-  <button type="button" class="lang-current" aria-label="Change language" aria-expanded="false" aria-controls="lang-dropdown">
-    <Image src={flags[defaultLocale]} alt={defaultLocale.toUpperCase()} width={24} height={16} />
-    <span>{defaultLocale.toUpperCase()}</span>
-    <svg class="lang-chevron" viewBox="0 0 12 8" width="12" height="8" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-  </button>
-  <div class="lang-dropdown" id="lang-dropdown" role="menu">
-    {locales.map(locale => (
-      <button type="button" class="lang-option" role="menuitem" data-lang={locale}>
-        <Image src={flags[locale]} alt={locale.toUpperCase()} width={24} height={16} />
-        <span>{locale.toUpperCase()}</span>
-      </button>
-    ))}
+  <div class="lang-pill" id="lang-pill" role="menu">
+    <button type="button" class="lang-current" aria-label="Change language" aria-expanded="false" aria-controls="lang-options">
+      <Image src={flags[defaultLocale]} alt={defaultLocale.toUpperCase()} width={24} height={16} />
+      <span>{defaultLocale.toUpperCase()}</span>
+      <svg class="lang-chevron" viewBox="0 0 12 8" width="12" height="8" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+    </button>
+    <div class="lang-options" id="lang-options">
+      {locales.map(locale => (
+        <button type="button" class="lang-option" role="menuitem" data-lang={locale}>
+          <div class="lang-option-inner">
+            <Image src={flags[locale]} alt={locale.toUpperCase()} width={24} height={16} />
+            <span>{locale.toUpperCase()}</span>
+          </div>
+        </button>
+      ))}
+    </div>
   </div>
 </div>
 
@@ -140,6 +144,17 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
 
   const savedLang = getSavedLang();
   if (savedLang !== defaultLocale) applyLang(savedLang);
+
+  const firstSection = document.querySelector('.section');
+  if (firstSection) {
+    const sensObserver = new IntersectionObserver(
+      ([entry]) => {
+        switcher.classList.toggle('visible', !entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    sensObserver.observe(firstSection);
+  }
 </script>
 
 <style is:global>
@@ -149,6 +164,36 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
     right: 1.5rem;
     z-index: 9999;
     pointer-events: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+
+  .lang-switcher.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+    background: #FFA65A;
+    border: 1px solid #FFA65A;
+    border-radius: 24px;
+    padding: 0;
+    overflow: hidden;
+    min-width: 52px;
+    max-height: 56px;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.3s ease;
+  }
+
+  .lang-switcher.open .lang-pill {
+    max-height: 400px;
+    border-radius: 24px;
   }
 
   .lang-current {
@@ -156,12 +201,12 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.8rem 1.4rem;
+    padding: 0.95rem 1.6rem;
     background: #FFA65A;
     color: #1a1a1a;
-    border: 1px solid #FFA65A;
-    border-radius: 24px;
-    font-size: 0.85rem;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.95rem;
     font-weight: 600;
     font-family: 'Inter', system-ui, sans-serif;
     cursor: pointer;
@@ -170,10 +215,12 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
     box-shadow: none;
     appearance: none;
     outline: none;
+    flex-shrink: 0;
+    z-index: 2;
+    order: 2;
   }
 
   .lang-current:hover {
-    transform: translateY(-8px);
     background: #FFA65A;
   }
 
@@ -188,7 +235,7 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
   .lang-chevron {
     width: 12px;
     height: 8px;
-    transition: transform 0.2s;
+    transition: transform 0.3s ease;
     pointer-events: none;
   }
 
@@ -196,50 +243,73 @@ const flags: Record<string, any> = { en: flagUk, fr: flagFrance, es: flagSpain, 
     transform: rotate(180deg);
   }
 
-  .lang-dropdown {
-    position: absolute;
-    bottom: calc(100% + 0.5rem);
-    right: 0;
-    display: none;
+  .lang-options {
+    display: flex;
     flex-direction: column;
-    background: rgba(10, 10, 10, 0.95);
-    border: 1px solid #FFA65A;
-    border-radius: 12px;
-    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    padding: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    white-space: nowrap;
+    transition: opacity 0.3s ease 0.1s, visibility 0.3s;
+    order: 1;
     min-width: 100%;
   }
 
-  .lang-switcher.open .lang-dropdown {
-    display: flex;
+  .lang-switcher.open .lang-options {
+    opacity: 1;
+    visibility: visible;
   }
 
   .lang-option {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.2rem;
+    justify-content: center;
     color: #1a1a1a;
-    background: none;
+    background: transparent;
     border: none;
-    font-size: 0.85rem;
+    border-radius: 14px;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.15s;
     white-space: nowrap;
-    width: 100%;
-    text-align: left;
     pointer-events: auto;
+    appearance: none;
+    width: auto;
+    padding: 0.7rem 1.2rem;
+  }
+
+  .lang-option-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    line-height: 1;
+    white-space: nowrap;
   }
 
   .lang-option:hover {
-    background: rgba(255, 166, 90, 0.5);
+    background: rgba(26, 26, 26, 0.15);
   }
 
   .lang-option img {
     height: 16px !important;
-    width: auto !important;
+    width: 24px !important;
     border-radius: 0 !important;
     margin: 0 !important;
     pointer-events: none;
+    flex-shrink: 0;
+    display: inline-block !important;
+    vertical-align: middle;
+  }
+
+  .lang-option-inner span {
+    flex-shrink: 0;
+    line-height: 1;
   }
 </style>
