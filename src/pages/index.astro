@@ -193,13 +193,6 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     font-family: 'Inter', system-ui, sans-serif !important;
     color: #1a1a1a !important;
     background: #ffffff !important;
-    background-image: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.15) 2px,
-      rgba(0, 0, 0, 0.15) 4px
-    );
   }
 
   #menu-bar {
@@ -290,7 +283,9 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
   }
 
   .studio {
-    background: radial-gradient(ellipse at 50% 0%, #3a3a3a 0%, #3a3a3a 70%);
+    min-height: 100vh;
+    height: 100vh;
+    background-color: #3a3a3a;
     overflow: hidden;
   }
 
@@ -416,13 +411,13 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
   }
 
   .cover-layer.active {
-    opacity: 0.3;
+    opacity: 0.6;
     transform: scale(0.8);
   }
 
   .games h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: 3rem;
+    font-family: 'SuperBugly', 'Anton', sans-serif;
+    font-size: 4.5rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: #FFA65A;
@@ -440,7 +435,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     z-index: 1;
     margin-bottom: 2rem;
     padding: 2rem 3rem;
-    background: rgba(0, 0, 0, 0.7);
+    background: #FFA65A;
     border-radius: 8px;
     max-width: 900px;
     margin-left: auto;
@@ -462,7 +457,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     white-space: nowrap;
     margin: 0;
     padding-right: 3rem;
-    border-right: 2px solid #FFA65A;
+    border-right: 2px solid #1a1a1a;
   }
 
   .game-info-right {
@@ -474,7 +469,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
 
   .game-desc {
     font-size: 1rem;
-    color: #aaa;
+    color: #1a1a1a;
     line-height: 1.6;
     margin: 0;
     max-width: 450px;
@@ -485,11 +480,11 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     width: fit-content;
     margin: 1rem auto 0;
     padding: 0.75rem 2rem;
-    background: transparent;
-    border: 1px solid #FFA65A;
-    color: #FFA65A;
+    background: #FB2B00;
+    border: 1px solid #FB2B00;
+    color: #1a1a1a;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -498,8 +493,8 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
   }
 
   .game-btn:hover {
-    background: #FFA65A;
-    color: #1a1a1a;
+    background: #1a1a1a;
+    color: #FB2B00;
   }
 
   .games-content {
@@ -551,7 +546,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     color: #666;
     width: 140px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.4);
+    background: #FFA65A;
     padding: 0.4rem 0.2rem;
     border-radius: 10px;
     color: #1a1a1a;
@@ -564,8 +559,8 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
   }
 
   .blog h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: 3rem;
+    font-family: 'SuperBugly', 'Anton', sans-serif;
+    font-size: 4.5rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: #FFA65A;
@@ -806,7 +801,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     .game-title {
       padding-right: 0;
       border-right: none;
-      border-bottom: 2px solid #FFA65A;
+      border-bottom: 2px solid #1a1a1a;
       padding-bottom: 0.5rem;
       font-size: 1.4rem;
       text-align: center;
@@ -857,7 +852,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     }
 
     .games h2 {
-      font-size: 2rem;
+      font-size: 3.5rem;
     }
 
 .cartridge-wrap {
@@ -890,7 +885,7 @@ const homeUrl = getRelativeLocaleUrl(currentLocale);
     }
 
     .blog h2 {
-      font-size: 2rem;
+      font-size: 3.5rem;
     }
 
   }
