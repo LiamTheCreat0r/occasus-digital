@@ -143,8 +143,8 @@ const jsonLd = {
 
   body {
     font-family: 'Inter', system-ui, sans-serif !important;
-    color: #1a1a1a !important;
-    background: #ffffff !important;
+    color: #f5f5f5 !important;
+    background: #111111 !important;
     background-image: repeating-linear-gradient(
       0deg,
       transparent,
@@ -206,7 +206,7 @@ const jsonLd = {
   }
 
   .menu-logo-link:hover .menu-brand {
-    opacity: 0.7;
+    color: #ffffff;
   }
 
   .menu-links {
@@ -216,9 +216,10 @@ const jsonLd = {
   }
 
   .menu-link {
+    font-family: 'SuperBugly', 'Anton', sans-serif;
     color: #FFA65A;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -226,7 +227,7 @@ const jsonLd = {
   }
 
   .menu-link:hover {
-    color: #1a1a1a;
+    color: #ffffff;
   }
 
   .menu-toggle {
@@ -240,11 +241,17 @@ const jsonLd = {
     margin-left: auto;
   }
 
+  .menu-toggle:hover,
+  .menu-toggle:focus {
+    background: transparent;
+    outline: none;
+  }
+
   .menu-toggle span {
     display: block;
     width: 22px;
     height: 2px;
-    background: #ffffff;
+    background: #FFA65A;
     border-radius: 1px;
     transition: transform 0.3s, opacity 0.3s;
   }
@@ -391,7 +398,7 @@ const jsonLd = {
     position: relative;
     max-width: 700px;
     margin: 0 auto;
-    background: #ffffff;
+    background: #1a1a1a;
     border-radius: 8px;
   }
 
@@ -481,8 +488,8 @@ const jsonLd = {
   }
 
   #game-footer {
-    background: #ffffff;
-    border-top: 1px solid #e5e5e5;
+    background: #1a1a1a;
+    border-top: 1px solid #2a2a2a;
     padding: 3rem 2rem;
     margin-top: 2rem;
   }
@@ -519,7 +526,7 @@ const jsonLd = {
   }
 
   .footer-copy {
-    color: #444;
+    color: #999;
     font-size: 0.8rem;
   }
 
