@@ -1,0 +1,66 @@
+.post {
+  padding-top: calc(var(--nav-h) + clamp(2.5rem, 2rem + 4vw, 6rem));
+}
+.head {
+  max-width: 900px;
+  display: grid;
+  gap: 1.25rem;
+}
+.back {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.back:hover {
+  color: var(--ink);
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+}
+.meta time {
+  margin-right: 0.4rem;
+  font-weight: 600;
+  color: var(--ember);
+}
+.tag {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.title {
+  font-size: var(--step-4);
+}
+.lead {
+  font-family: var(--font-head);
+  font-size: var(--step-1);
+  color: var(--ink-dim);
+}
+.heroWrap {
+  max-width: 1100px;
+  margin-block: clamp(2rem, 1.5rem + 3vw, 4rem);
+}
+.hero {
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+}
+.body {
+  max-width: 68ch;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding-bottom: 3rem;
+  font-size: 1.1rem;
+}

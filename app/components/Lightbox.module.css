@@ -1,0 +1,58 @@
+.dialog {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+}
+.dialog[open] {
+  display: grid;
+  place-items: center;
+}
+.dialog::backdrop {
+  background: rgb(7 6 9 / 0.94);
+  backdrop-filter: blur(6px);
+}
+.img {
+  max-width: min(92vw, 1600px);
+  max-height: 84dvh;
+  border-radius: var(--radius);
+  box-shadow: 0 30px 80px -20px rgb(0 0 0 / 0.8);
+  animation: in 0.3s var(--ease-out);
+}
+.btn {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgb(237 230 218 / 0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.btn:hover {
+  background: var(--bone);
+  color: var(--ink-on-bone);
+}
+.close { top: 1.25rem; right: 1.25rem; }
+.prev { left: 1.25rem; top: 50%; transform: translateY(-50%); }
+.next { right: 1.25rem; top: 50%; transform: translateY(-50%); }
+.count {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-dim);
+}
+@media (max-width: 640px) {
+  .prev, .next { top: auto; bottom: 1rem; transform: none; }
+}
+@keyframes in {
+  from { opacity: 0; transform: scale(0.97); }
+}

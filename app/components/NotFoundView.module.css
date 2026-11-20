@@ -1,0 +1,40 @@
+.wrap {
+  min-height: 80dvh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1rem;
+  padding: calc(var(--nav-h) + 3rem) var(--gutter) 3rem;
+  text-align: center;
+}
+.mascot {
+  width: clamp(140px, 30vw, 220px);
+  height: auto;
+  animation: wobble 3.5s ease-in-out infinite;
+}
+.code {
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  line-height: 1;
+  background: var(--sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.title {
+  font-size: var(--step-3);
+}
+.body {
+  color: var(--ink-dim);
+  max-width: 36ch;
+  margin-bottom: 1rem;
+}
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(-6deg) translateY(0);
+  }
+  50% {
+    transform: rotate(6deg) translateY(-10px);
+  }
+}
