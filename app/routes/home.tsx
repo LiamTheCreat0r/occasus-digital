@@ -2,7 +2,6 @@ import { useCallback, useRef, useState } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/home";
 import { games } from "~/data/games";
-import { team } from "~/data/team";
 import { getPosts } from "~/lib/content.server";
 import { seo } from "~/lib/seo";
 import { localeFromPath, translate, useT } from "~/i18n";
@@ -131,30 +130,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      {/* ---------------- Team ---------------- */}
-      <section className={`section ${styles.team}`}>
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <span className="eyebrow">{t("home.team")}</span>
-              <h2 className="section-title">{t("about.teamTitle")}</h2>
-            </div>
-            <Link to={t.path("/about")} className="btn btn--ghost">
-              {t("home.meetTeam")} <IconArrow />
-            </Link>
-          </div>
-          <ul className={styles.teamGrid}>
-            {team.map((m, i) => (
-              <Reveal as="li" key={m.name} delay={i * 0.1} className={styles.member}>
-                <div className={styles.portrait}>
-                  <img src={m.portrait} alt={m.name} width={600} height={600} loading="lazy" />
-                </div>
-                <p className={styles.memberName}>{m.name}</p>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
     </>
   );
 }

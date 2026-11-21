@@ -206,66 +206,7 @@
   border-top: 1px solid var(--line);
 }
 
-/* ---------------- Team ---------------- */
-.team {
-  border-top: 1px solid var(--line);
-}
-.teamGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1rem, 0.5rem + 2vw, 2rem);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.member {
-  display: grid;
-  gap: 1rem;
-}
-.portrait {
-  position: relative;
-  aspect-ratio: 1;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--bone);
-}
-.portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(1) contrast(1.1);
-  transition:
-    filter 0.5s,
-    transform 0.8s var(--ease-out);
-}
-.portrait::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 4px;
-  background: var(--sunset);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s var(--ease-out);
-}
-.member:hover .portrait img {
-  filter: none;
-  transform: scale(1.04);
-}
-.member:hover .portrait::after {
-  transform: scaleX(1);
-}
-.memberName {
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: var(--step-1);
-  letter-spacing: -0.02em;
-}
-
 @media (max-width: 640px) {
-  .teamGrid {
-    grid-template-columns: 1fr 1fr;
-  }
   .scroll {
     display: none;
   }

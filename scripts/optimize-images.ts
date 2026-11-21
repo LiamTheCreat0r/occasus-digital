@@ -16,7 +16,6 @@ const jobs: Record<string, number> = {
   cartridges: 800,
   "game-covers": 1920,
   "game-screenshots": 1600,
-  portraits: 600,
 };
 
 for (const [folder, width] of Object.entries(jobs)) {

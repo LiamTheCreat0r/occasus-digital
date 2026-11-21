@@ -25,32 +25,6 @@
   filter: drop-shadow(0 20px 40px rgb(229 38 31 / 0.35));
 }
 
-.team {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1rem, 0.5rem + 2vw, 2rem);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.member {
-  display: grid;
-  gap: 1rem;
-}
-.member img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1;
-  border-radius: var(--radius-lg);
-  background: var(--bone);
-}
-.member p {
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: var(--step-2);
-  letter-spacing: -0.02em;
-}
-
 .games {
   margin: 0;
   padding: 0;
@@ -90,9 +64,6 @@
 @media (max-width: 760px) {
   .statement {
     grid-template-columns: 1fr;
-  }
-  .team {
-    grid-template-columns: 1fr 1fr;
   }
   .gameRow {
     grid-template-columns: 52px 1fr auto;
