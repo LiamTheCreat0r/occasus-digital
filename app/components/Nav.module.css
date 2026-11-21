@@ -1,56 +1,110 @@
 .nav {
+  --corner: 230px;
+  --cut: 250px;
+  --strip: 12px;
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
+  transform: translateY(calc(-1 * var(--corner) - 2rem));
+  visibility: hidden;
   transition:
-    background 0.35s,
-    backdrop-filter 0.35s,
-    border-color 0.35s;
-  border-bottom: 1px solid transparent;
+    transform 0.45s var(--ease-out),
+    visibility 0s linear 0.45s;
 }
-.nav[data-scrolled="true"] {
-  background: rgb(11 10 13 / 0.78);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-bottom-color: var(--line);
+.nav[data-visible="true"] {
+  transform: translateY(0);
+  visibility: visible;
+  transition:
+    transform 0.45s var(--ease-out),
+    visibility 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .nav[data-visible="true"] {
+    transition: none;
+  }
+}
+
+/* Black slanted bar with a red strip underneath */
+.bar {
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--nav-h);
+  pointer-events: none;
+}
+.bar::before,
+.bar::after {
+  content: "";
+  position: absolute;
+  right: 0;
+}
+.bar::before {
+  inset: 0 0 auto;
+  height: 100%;
+  background: #000;
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% 100%, calc(var(--cut) - var(--nav-h)) 100%);
+}
+.bar::after {
+  left: 0;
+  top: calc(100% + 4px);
+  height: var(--strip);
+  background: var(--red);
+  clip-path: polygon(
+    calc(var(--cut) - var(--nav-h) - 4px) 0,
+    100% 0,
+    100% 100%,
+    calc(var(--cut) - var(--nav-h) - 4px - var(--strip)) 100%
+  );
+}
+
+/* Red/black diagonal corner holding the mascot */
+.corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: var(--corner);
+  height: var(--corner);
+  pointer-events: none;
+}
+.corner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--red) 0 33%, #000 33% 50%, transparent 50%);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.mascot {
+  position: absolute;
+  top: 8%;
+  left: 6%;
+  width: 52%;
+  height: auto;
+  pointer-events: auto;
+  transform: rotate(-8deg);
+  filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff)
+    drop-shadow(0 6px 10px rgb(0 0 0 / 0.55));
+  transition: transform 0.4s var(--ease-out);
+}
+.corner:hover .mascot {
+  transform: rotate(-18deg) scale(1.06);
 }
 
 .inner {
+  position: relative;
+  z-index: 1;
   height: var(--nav-h);
-  max-width: var(--max);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
+  padding-left: var(--cut);
+  padding-right: var(--gutter);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-}
-.mascot {
-  width: 38px;
-  height: auto;
-  filter: drop-shadow(0 0 0.5px var(--bone)) drop-shadow(0 0 0.5px var(--bone));
-  transition: transform 0.4s var(--ease-out);
-}
-.brand:hover .mascot {
-  transform: rotate(-12deg) scale(1.08);
-}
-.wordmark {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  letter-spacing: 0.02em;
-  line-height: 1;
-  padding-top: 0.2rem;
+  justify-content: flex-end;
+  gap: 2rem;
 }
 
 .desktop ul {
   display: flex;
-  gap: 0.25rem;
+  gap: clamp(1rem, 0.5rem + 2vw, 3rem);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -58,32 +112,29 @@
 .desktop a {
   position: relative;
   display: block;
-  padding: 0.5rem 0.95rem;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--ink-dim);
-  transition:
-    color 0.2s,
-    background 0.2s;
+  padding: 0.35rem 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 0.9rem + 0.8vw, 1.75rem);
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--bone);
+  transition: color 0.2s;
 }
-.desktop a:hover {
-  color: var(--ink);
-  background: rgb(237 230 218 / 0.07);
-}
+.desktop a:hover,
 .desktop a.active {
-  color: var(--ink);
+  color: var(--red);
 }
 .desktop a.active::after {
   content: "";
   position: absolute;
-  left: 50%;
-  bottom: 0.15rem;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
+  left: 0;
+  right: 0;
+  bottom: -0.15rem;
+  height: 3px;
   background: var(--red);
-  transform: translateX(-50%);
+  transform: skewX(-30deg);
 }
 
 .right {
@@ -123,8 +174,9 @@
 }
 
 .mobile {
+  position: relative;
   height: calc(100dvh - var(--nav-h));
-  padding: 2rem var(--gutter);
+  padding: calc(var(--corner) - var(--nav-h) + 1rem) var(--gutter) 2rem;
   background: var(--bg);
   overflow-y: auto;
 }
@@ -138,14 +190,19 @@
 .mobile a {
   display: block;
   padding: 0.5rem 0;
-  font-family: var(--font-head);
-  font-weight: 700;
+  font-family: var(--font-display);
   font-size: var(--step-3);
-  letter-spacing: -0.03em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   border-bottom: 1px solid var(--line);
 }
 
 @media (max-width: 760px) {
+  .nav {
+    --corner: 120px;
+    --cut: 136px;
+    --strip: 8px;
+  }
   .desktop {
     display: none;
   }

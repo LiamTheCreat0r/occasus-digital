@@ -31,18 +31,18 @@ export function Nav() {
 
   const links = [
     { to: t.path("/") + "#games", label: t("nav.ourGames"), end: true },
-    { to: t.path("/blog"), label: t("nav.blog"), end: false },
     { to: t.path("/about"), label: t("nav.theStudio"), end: false },
+    { to: t.path("/blog"), label: t("nav.blog"), end: false },
   ];
 
   return (
-    <header className={styles.nav} data-scrolled={scrolled || open} data-open={open}>
-      <div className={styles.inner}>
-        <Link to={t.path("/")} className={styles.brand} aria-label="Occasus Digital — home">
-          <img src={mascot} alt="" width={40} height={45} className={styles.mascot} />
-          <span className={styles.wordmark}>Occasus</span>
-        </Link>
+    <header className={styles.nav} data-visible={scrolled || open} data-open={open}>
+      <div className={styles.bar} aria-hidden="true" />
+      <Link to={t.path("/")} className={styles.corner} aria-label="Occasus Digital — home">
+        <img src={mascot} alt="" width={120} height={136} className={styles.mascot} />
+      </Link>
 
+      <div className={styles.inner}>
         <nav aria-label="Main" className={styles.desktop}>
           <ul>
             {links.map((l) => (
