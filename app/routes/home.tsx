@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useRef } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/home";
 import { games } from "~/data/games";
@@ -34,8 +34,8 @@ export function meta({ location }: Route.MetaArgs) {
 }
 
 // One clip per game for the hero reel (first video of each).
-const clips: (Clip & { slug: string })[] = games.map((g) => ({
-  slug: g.slug,
+// Endhell is skipped: its vertical video doesn't fit the wide hero.
+const clips: Clip[] = games.filter((g) => g.slug !== "endhell").map((g) => ({
   src: `/videos/${g.videos[0]}`,
   poster: g.cover,
   label: g.title,
@@ -43,8 +43,6 @@ const clips: (Clip & { slug: string })[] = games.map((g) => ({
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   const t = useT();
-  const [current, setCurrent] = useState(0);
-  const onChange = useCallback((i: number) => setCurrent(i), []);
   const shelf = useRef<HTMLUListElement>(null);
 
   const scrollShelf = (dir: 1 | -1) => {
@@ -54,13 +52,11 @@ export default function Home({ loaderData }: Route.ComponentProps) {
     el.scrollBy({ left: dir * ((card?.clientWidth ?? 400) + 24), behavior: "smooth" });
   };
 
-  const nowPlaying = clips[current];
-
   return (
     <>
       {/* ---------------- Hero ---------------- */}
       <section className={styles.hero}>
-        <VideoReel clips={clips} onChange={onChange} />
+        <VideoReel clips={clips} />
         <div className={styles.heroShade} aria-hidden="true" />
 
         <div className={`container ${styles.heroInner}`}>
@@ -69,23 +65,11 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             <img src={title} alt={t("home.title")} width={1200} height={520} />
           </h1>
           <p className={styles.tagline}>{t("home.tagline")}</p>
-          <div className={styles.heroCtas}>
-            <a href="#games" className="btn">
-              {t("home.ourGames")} <IconArrow />
-            </a>
-            <Link to={t.path("/about")} className="btn btn--ghost">
-              {t("nav.theStudio")}
-            </Link>
-          </div>
+          <svg className={styles.heroArrow} width="28" height="18" viewBox="0 0 28 18" aria-hidden="true">
+            <path d="M4 4h20L14 14z" fill="currentColor" stroke="currentColor" strokeWidth="4" strokeLinejoin="round" />
+          </svg>
         </div>
 
-        <div className={`container ${styles.heroFoot}`}>
-          <Link to={t.path(`/games/${nowPlaying.slug}`)} className={styles.nowPlaying}>
-            <span className={styles.recDot} aria-hidden="true" />
-            <span className={styles.nowLabel}>{t("home.nowPlaying")}</span>
-            <span className={styles.nowTitle}>{nowPlaying.label}</span>
-          </Link>
-        </div>
         <div className={styles.horizon} aria-hidden="true" />
       </section>
 
