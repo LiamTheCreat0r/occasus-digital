@@ -57,23 +57,13 @@
   max-width: 40ch;
   text-shadow: 0 2px 12px rgb(0 0 0 / 0.8);
 }
-.ctas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-}
-.ctas :global(.btn--ghost) {
-  background: rgb(11 10 13 / 0.4);
-  backdrop-filter: blur(8px);
-}
 
 /* Body */
 .body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;
   gap: clamp(2rem, 1rem + 5vw, 6rem);
-  padding-block: clamp(3rem, 2rem + 4vw, 6rem);
+  padding-top: clamp(3rem, 2rem + 4vw, 6rem);
 }
 .desc {
   font-size: var(--step-1);

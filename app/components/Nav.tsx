@@ -32,7 +32,7 @@ export function Nav() {
   const links = [
     { to: t.path("/") + "#games", label: t("nav.ourGames"), end: true },
     { to: t.path("/about"), label: t("nav.theStudio"), end: false },
-    { to: t.path("/blog"), label: t("nav.blog"), end: false },
+    { to: t.path("/") + "#blog", label: t("nav.blog"), end: true },
   ];
 
   return (

@@ -23,7 +23,7 @@ export default function About() {
   const t = useT();
   return (
     <>
-      <PageHeader eyebrow={t("nav.theStudio")} title={t("about.title")} lead={t("about.description")} />
+      <PageHeader title={t("about.title")} lead={t("about.description")} />
 
       <section className={`container ${styles.statement}`}>
         <Reveal className={styles.quote}>
@@ -35,7 +35,6 @@ export default function About() {
       <section className="container section">
         <div className="section-head">
           <div>
-            <span className="eyebrow">{String(games.length).padStart(2, "0")} {t("home.titles")}</span>
             <h2 className="section-title">{t("home.ourGames")}</h2>
           </div>
         </div>

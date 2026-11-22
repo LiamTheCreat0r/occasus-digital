@@ -77,7 +77,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       <section id="games" className={`section ${styles.games}`}>
         <div className="container section-head">
           <div>
-            <span className="eyebrow">{String(games.length).padStart(2, "0")} {t("home.titles")}</span>
             <h2 className="section-title">{t("home.ourGames")}</h2>
           </div>
           <div className={styles.shelfNav}>
@@ -99,11 +98,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       </section>
 
       {/* ---------------- Blog ---------------- */}
-      <section className={`section ${styles.blog}`}>
+      <section id="blog" className={`section ${styles.blog}`}>
         <div className="container">
           <div className="section-head">
             <div>
-              <span className="eyebrow">{t("home.blog")}</span>
               <h2 className="section-title">{t("home.latest")}</h2>
             </div>
             <Link to={t.path("/blog")} className="btn btn--ghost">

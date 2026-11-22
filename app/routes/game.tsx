@@ -65,13 +65,6 @@ export default function GamePage({ loaderData }: Route.ComponentProps) {
           </Link>
           <h1 className={styles.title}>{t.dyn(`game.${game.slug}.title`)}</h1>
           <p className={styles.tagline}>{t.dyn(`gameInfo.${game.slug}.desc`)}</p>
-          <div className={styles.ctas}>
-            {stores.map((s, i) => (
-              <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" className={i === 0 ? "btn btn--hot" : "btn btn--ghost"}>
-                {t("game.playOn")} {s.name} <IconArrowUpRight />
-              </a>
-            ))}
-          </div>
         </div>
       </header>
 
@@ -100,40 +93,50 @@ export default function GamePage({ loaderData }: Route.ComponentProps) {
         </aside>
       </div>
 
-      {/* ---------- Gameplay ---------- */}
-      {game.videos.length > 0 && (
+      {/* ---------- Gameplay: videos + screenshots ---------- */}
+      {(game.videos.length > 0 || game.screenshots.length > 0) && (
         <section className={`container ${styles.block}`}>
-          <span className="eyebrow">{t("game.videos")}</span>
-          <div className={styles.videos} data-aspect={game.videoAspect}>
-            {game.videos.map((v) => (
-              <Reveal key={v}>
-                <video src={`/videos/${v}`} poster={game.cover} controls muted loop playsInline preload="none" className={styles.video} />
-              </Reveal>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ---------- Screenshots ---------- */}
-      {game.screenshots.length > 0 && (
-        <section className={`container ${styles.block}`}>
-          <span className="eyebrow">{t("game.screenshots")}</span>
-          <ul className={styles.shots}>
-            {game.screenshots.map((src, i) => (
-              <Reveal as="li" key={src} delay={(i % 3) * 0.06}>
-                <button className={styles.shot} onClick={() => setShot(i)}>
-                  <img src={src} alt={`${game.title} ${t("game.screenshot")} ${i + 1}`} loading="lazy" />
-                </button>
-              </Reveal>
-            ))}
-          </ul>
-          <Lightbox images={game.screenshots} index={shot} alt={`${game.title} ${t("game.screenshot")}`} onChange={setShot} onClose={closeShot} />
+          <h2 className="section-title">{t("game.videos")}</h2>
+          {game.videos.length > 0 && (
+            <div className={styles.videos} data-aspect={game.videoAspect}>
+              {game.videos.map((v) => (
+                <Reveal key={v}>
+                  <video
+                    src={`/videos/${v}`}
+                    poster={game.cover}
+                    controls
+                    muted
+                    loop
+                    playsInline
+                    preload="none"
+                    className={styles.video}
+                    onPointerEnter={(e) => e.pointerType === "mouse" && e.currentTarget.play().catch(() => {})}
+                    onPointerLeave={(e) => e.pointerType === "mouse" && e.currentTarget.pause()}
+                  />
+                </Reveal>
+              ))}
+            </div>
+          )}
+          {game.screenshots.length > 0 && (
+            <>
+              <ul className={styles.shots}>
+                {game.screenshots.map((src, i) => (
+                  <Reveal as="li" key={src} delay={(i % 3) * 0.06}>
+                    <button className={styles.shot} onClick={() => setShot(i)}>
+                      <img src={src} alt={`${game.title} ${t("game.screenshot")} ${i + 1}`} loading="lazy" />
+                    </button>
+                  </Reveal>
+                ))}
+              </ul>
+              <Lightbox images={game.screenshots} index={shot} alt={`${game.title} ${t("game.screenshot")}`} onChange={setShot} onClose={closeShot} />
+            </>
+          )}
         </section>
       )}
 
       {/* ---------- More games ---------- */}
       <section className={`container ${styles.block}`}>
-        <span className="eyebrow">{t("game.moreGames")}</span>
+        <h2 className="section-title">{t("game.moreGames")}</h2>
         <ul className={styles.more}>
           {others.map((g) => (
             <li key={g.slug}>

@@ -47,7 +47,6 @@ export function GameCard({ game, index }: { game: Game; index: number }) {
       <div className={styles.media}>
         <img src={game.cover} alt="" loading={index < 2 ? "eager" : "lazy"} width={1920} height={1080} />
         <video ref={video} muted loop playsInline preload="none" aria-hidden="true" />
-        <span className={styles.num}>{String(index + 1).padStart(2, "0")}</span>
       </div>
       <div className={styles.body}>
         <div className={styles.row}>

@@ -23,7 +23,7 @@ export default function BlogIndex({ loaderData }: Route.ComponentProps) {
   const t = useT();
   return (
     <>
-      <PageHeader eyebrow={t("home.latest")} title={t("blogIndex.title")} lead={t("blogIndex.description")} />
+      <PageHeader title={t("blogIndex.title")} lead={t("blogIndex.description")} />
       <div className="container" style={{ paddingBottom: "4rem" }}>
         <PostList posts={loaderData.posts} />
       </div>

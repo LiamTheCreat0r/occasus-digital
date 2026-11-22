@@ -5,8 +5,10 @@
   padding-bottom: clamp(2.5rem, 2rem + 3vw, 4.5rem);
 }
 .title {
+  font-family: var(--font-display);
+  font-weight: normal;
   font-size: var(--step-5);
-  letter-spacing: -0.045em;
+  letter-spacing: 0;
   line-height: 0.92;
 }
 .lead {

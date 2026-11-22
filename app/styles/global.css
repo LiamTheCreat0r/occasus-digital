@@ -171,25 +171,6 @@ p {
   transform: none;
 }
 
-/* Small uppercase label used above section titles */
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-body);
-  font-size: var(--step--1);
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-dim);
-}
-.eyebrow::before {
-  content: "";
-  width: 1.75rem;
-  height: 2px;
-  background: var(--sunset);
-}
-
 /* Buttons */
 .btn {
   --btn-bg: var(--bone);
@@ -245,8 +226,11 @@ p {
   margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
 }
 .section-title {
+  font-family: var(--font-display);
+  font-weight: normal;
   font-size: var(--step-4);
-  margin-top: 0.75rem;
+  letter-spacing: 0;
+  line-height: 0.95;
 }
 
 /* Rich text (blog posts, game descriptions) */
