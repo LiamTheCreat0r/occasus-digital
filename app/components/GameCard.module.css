@@ -29,6 +29,23 @@
   overflow: hidden;
   background: #000;
 }
+/* Portrait video: phone-shaped frame centred over the cover, which blurs
+   behind it, so the card keeps the same height as the rest. 9/16 of a
+   16:9 box's height is 81/256 of its width. */
+.card[data-aspect="vertical"] .media video {
+  width: calc(100% * 81 / 256);
+  margin-inline: auto;
+  box-shadow: 0 0 40px rgb(0 0 0 / 0.5);
+}
+.card[data-aspect="vertical"]:hover .media img,
+.card[data-aspect="vertical"]:focus-visible .media img {
+  filter: blur(14px) brightness(0.6);
+}
+.media img,
+.card[data-aspect="vertical"] .media video {
+  width: calc(100% * 81 / 256);
+  margin-inline: auto;
+}
 .media img,
 .media video {
   position: absolute;
@@ -38,7 +55,8 @@
   object-fit: cover;
   transition:
     transform 0.8s var(--ease-out),
-    opacity 0.4s;
+    opacity 0.4s,
+    filter 0.4s;
 }
 .media video {
   opacity: 0;

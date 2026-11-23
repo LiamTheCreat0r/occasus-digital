@@ -57,17 +57,6 @@ function game(def: Omit<Game, "cover" | "cartridge" | "screenshots"> & { assetNa
 
 export const games: Game[] = [
   game({
-    slug: "endhell",
-    title: "Endhell",
-    assetName: "endhell",
-    platforms: ["Mobile", "PC"],
-    accent: "#e8a33a",
-    videos: ["endhell.webm"],
-    videoAspect: "vertical",
-    itchUrl: "https://excurse-software.itch.io/",
-    newgroundsUrl: "https://www.newgrounds.com/portal/view/1036184",
-  }),
-  game({
     slug: "spectra-collab",
     title: "Spectra Collab",
     assetName: "spectra-collab",
@@ -87,6 +76,17 @@ export const games: Game[] = [
     videoAspect: "wide",
     itchUrl: "https://excurse-software.itch.io/parabellum-rain",
     newgroundsUrl: "https://www.newgrounds.com/portal/view/984623",
+  }),
+  game({
+    slug: "endhell",
+    title: "Endhell",
+    assetName: "endhell",
+    platforms: ["Mobile", "PC"],
+    accent: "#e8a33a",
+    videos: ["endhell.webm"],
+    videoAspect: "vertical",
+    itchUrl: "https://excurse-software.itch.io/",
+    newgroundsUrl: "https://www.newgrounds.com/portal/view/1036184",
   }),
   game({
     slug: "babel",

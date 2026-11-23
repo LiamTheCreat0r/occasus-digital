@@ -37,6 +37,7 @@ export function GameCard({ game, index }: { game: Game; index: number }) {
       ref={card}
       to={t.path(`/games/${game.slug}`)}
       className={styles.card}
+      data-aspect={game.videoAspect}
       style={{ "--accent": game.accent } as React.CSSProperties}
       onPointerEnter={play}
       onPointerLeave={stop}
